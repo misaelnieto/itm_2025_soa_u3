@@ -59,4 +59,4 @@ plugins:
         locale: es
         paths:
           - tests
-          - webservice
+          - app

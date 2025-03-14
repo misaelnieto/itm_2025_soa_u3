@@ -47,19 +47,19 @@ Para que el PR sea integrado en la rama principal (main), debe de cumplir los re
 
 | Estudiante | Nombre de módulo | Módulo de servicio web | Módulo de pruebas |
 | --- | --- | --- | --- |
-| Juan Carlos Paredes Gatopo | `jparedes` | `webservice.jparedes` | `tests.jparedes` |
-| Diego Iván Dueñas Padilla | `dduenas` | `webservice.dduenas` | `tests.dduenas` |
-| David Ramos Luna | `dramos` | `webservice.dramos` | `tests.dramos` |
-| Rodolfo García Galaz | `rgarcia` | `webservice.rgarcia` | `tests.rgarcia` |
-| Karim Antonio Soto López | `ksoto` | `webservice.ksoto` | `tests.ksoto` |
-| Rosa Elena Palma y Meza Buelna | `rpalma` | `webservice.rpalma` | `tests.rpalma` |
-| Kevin Hernandez Zazueta | `khernandez` | `webservice.khernandez` | `tests.khernandez` |
-| Jazmin Heredia Cota | `jheredia` | `webservice.jheredia` | `tests.jheredia` |
-| José Manuel Arce Higuera | `jarce` | `webservice.jarce` | `tests.jarce` |
-| Isaí Moreno Mendoza | `imoreno` | `webservice.imoreno` | `tests.imoreno` |
-| Imanol Maximiliano Mayo Alvaro | `imayo` | `webservice.imayo` | `tests.imayo` |
-| Jesús Javier Chaidez Delgado | `jchaidez` | `webservice.jchaidez` | `tests.jchaidez` |
-| Javier Contreras Partida | `jcontreras` | `webservice.jcontreras` | `tests.jcontreras` |
-| Adrian Fernando Santelis Mendoza | `asantelis` | `webservice.asantelis` | `tests.asantelis` |
-| Fabian Ignacio Calzada Lozano | `fcalzada` | `webservice.fcalzada` | `tests.fcalzada` |
+| Juan Carlos Paredes Gatopo | `jparedes` | `app.proyectos.jparedes` | `tests.jparedes` |
+| Diego Iván Dueñas Padilla | `dduenas` | `app.proyectos.dduenas` | `tests.dduenas` |
+| David Ramos Luna | `dramos` | `app.proyectos.dramos` | `tests.dramos` |
+| Rodolfo García Galaz | `rgarcia` | `app.proyectos.rgarcia` | `tests.rgarcia` |
+| Karim Antonio Soto López | `ksoto` | `app.proyectos.ksoto` | `tests.ksoto` |
+| Rosa Elena Palma y Meza Buelna | `rpalma` | `app.proyectos.rpalma` | `tests.rpalma` |
+| Kevin Hernandez Zazueta | `khernandez` | `app.proyectos.khernandez` | `tests.khernandez` |
+| Jazmin Heredia Cota | `jheredia` | `app.proyectos.jheredia` | `tests.jheredia` |
+| José Manuel Arce Higuera | `jarce` | `app.proyectos.jarce` | `tests.jarce` |
+| Isaí Moreno Mendoza | `imoreno` | `app.proyectos.imoreno` | `tests.imoreno` |
+| Imanol Maximiliano Mayo Alvaro | `imayo` | `app.proyectos.imayo` | `tests.imayo` |
+| Jesús Javier Chaidez Delgado | `jchaidez` | `app.proyectos.jchaidez` | `tests.jchaidez` |
+| Javier Contreras Partida | `jcontreras` | `app.proyectos.jcontreras` | `tests.jcontreras` |
+| Adrian Fernando Santelis Mendoza | `asantelis` | `app.proyectos.asantelis` | `tests.asantelis` |
+| Fabian Ignacio Calzada Lozano | `fcalzada` | `app.proyectos.fcalzada` | `tests.fcalzada` |
 

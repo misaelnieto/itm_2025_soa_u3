@@ -50,7 +50,4 @@ servidor de pruebas.
 
 ## Referencia de la herramienta de línea de comandos `webservice`
 
-::: mkdocs-click
-    :module: webservice.app
-    :command: main
 

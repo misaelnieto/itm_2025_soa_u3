@@ -1,22 +1,60 @@
 name: Aseguramiento de la calidad de código
-on: push
+on:
+  pull_request:
+    branches:
+      - '*'
+permissions:
+  contents: write
+  checks: write
+  pull-requests: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout de código
         uses: actions/checkout@v4
+      - name: Instalación de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13' 
       - name: Instalación de UV
         uses: astral-sh/setup-uv@v5
       - name: Instalación de dependencias
         run: uv sync --all-extras --dev
       - name: Análisis estático de código
-        run: uv run ruff check --output-format=github
-      - name: Ejecutar pruebas
-        run: uv run pytest
-      - name: Reporte de cobertura de código (Orogoro) 
-        uses: orgoro/coverage@v3.2
+        uses: astral-sh/ruff-action@v3
         with:
-            coverageFile: coverage.xml
-            token: ${{ secrets.GITHUB_TOKEN }}
-            sourceDir: webservice
+          github-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          src: >-
+            app/
+            tests/
+      - name: Ejecutar pruebas
+        run: uv run pytest | tee pytest-coverage.txt
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./coverage.xml
+          title: Reporte de cobertura de código
+          badge-title: Calidad de código
+          hide-badge: false
+          hide-report: false
+          create-new-comment: false
+          hide-comment: false
+          report-only-changed-files: false
+          remove-link-from-badge: false
+      - name: Check the output coverage
+        run: |
+          echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Coverage Html - ${{ steps.coverageComment.outputs.coverageHtml }}"
+          echo "Summary Report - ${{ steps.coverageComment.outputs.summaryReport }}"
+      
+          echo "Coverage Warnings - ${{ steps.coverageComment.outputs.warnings }}"
+      
+          echo "Coverage Errors - ${{ steps.coverageComment.outputs.errors }}"
+          echo "Coverage Failures - ${{ steps.coverageComment.outputs.failures }}"
+          echo "Coverage Skipped - ${{ steps.coverageComment.outputs.skipped }}"
+          echo "Coverage Tests - ${{ steps.coverageComment.outputs.tests }}"
+          echo "Coverage Time - ${{ steps.coverageComment.outputs.time }}"
+          echo "Not Success Test Info - ${{ steps.coverageComment.outputs.notSuccessTestInfo }}"
