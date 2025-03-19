@@ -23,7 +23,7 @@ Para que el PR sea integrado en la rama principal (main), debe de cumplir los re
 
 ## Backend
 
-- [x] El backend del servicio web REST está construido usando FastAPI, Pydantic y SQLAlchemy y debidamente integrado al monolito
+- [x] El backend del servicio web REST está construido usando [FastAPI](https://fastapi.tiangolo.com/es/), [Pydantic](https://docs.pydantic.dev/latest/) y [SQLAlchemy](https://www.sqlalchemy.org/) y debidamente integrado al monolito
 - [x] Contiene pruebas de integración.
 - [x] Todas su pruebas de integración pasan.
 - [x] La calificación del análisis de cobertura de código de su servicio web es de 100%.
@@ -32,15 +32,12 @@ Para que el PR sea integrado en la rama principal (main), debe de cumplir los re
 
 ## Frontend
 
-- [x] El backend del servicio web REST está construido usando FastUI y debidamente integrado al monolito
+- [x] El backend del servicio web REST está construido usando [FastUI](https://github.com/pydantic/FastUI) y debidamente integrado al monolito
 - [x] Contiene pruebas de integración.
 - [x] Todas su pruebas de integración pasan.
 - [x] La calificación del análisis de cobertura de código de su servicio web es de 100%.
 - [x] El analizador estático de código no produce ningún error.
 - [x] El servicio está documentado en la carpeta `docs`.
-
-
-
 
 
 ### Asignación de nombre de módulos

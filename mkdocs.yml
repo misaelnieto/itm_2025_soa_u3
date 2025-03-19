@@ -1,6 +1,6 @@
-site_name: Arquitectura Orientada a Servicios
+site_name: Arquitectura Orientada a Servicios - Unidad 3
 use_directory_urls: true
-repo_url: https://github.com/misaelnieto/itm_2025_soa_u2/
+repo_url: https://github.com/misaelnieto/itm_2005_soa_u3/
 site_description: Documentación de la Unidad 3 de la materia de Arquitectura Orientada a Servicios
 site_author: Noe Nieto
 
@@ -24,6 +24,7 @@ theme:
   language: es
   palette:
     scheme: slate
+    primary: brown
   font:
     text: Noto Serif
     code: Ubuntu Mono

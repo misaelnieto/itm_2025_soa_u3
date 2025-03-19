@@ -1,0 +1,113 @@
+Header {
+    background: pink;
+    color: purple;
+}
+
+#principal {
+    height: 10;
+}
+
+#saldo {
+    margin:  0;
+    background: $panel;
+    color: $text;
+    border: round pink;
+    padding: 1 4;
+    text-align: center;
+}
+
+
+#saldo Label {
+    text-align: center;
+}
+
+#saldo #saldo-digits {
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: pink;
+    text-align: center;
+}
+
+#acciones {
+    margin: 0 1;
+    width: 15;
+}
+
+#acciones Button {
+    margin: 1 0;
+}
+
+#movimientos DataTable {
+    border: round green;
+}
+
+
+ModalLoading, ModalForm, ModalError {
+    align: center middle;
+}
+
+
+#dialog {
+    border: round green;
+    width: 60;
+    height: 15;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+#dialog Label {
+    text-align: center;
+    margin: 1 2
+}
+
+#dialog Input {
+    margin: 0 1;
+}
+
+#dialog #validation-errors {
+    color: red;
+}
+
+#dialog #buttons {
+    align: right middle;
+}
+
+#dialog Button {
+    margin: 0;
+}
+
+#loading {
+    width: 60;
+    height: 15;
+    border: thick $background 80%;
+    background: $surface;
+    align: center middle;
+}
+
+#loading Label{
+    margin: 1
+}
+
+ModalError Center {
+    width: 60;
+    height: 15;
+    border: thick red 80%;
+    background: $surface;
+    align:right middle;
+}
+
+ModalError Label{
+    margin: 1;
+    text-align: center;
+}
+
+ModalError Container {
+    width: 100%;
+    align: center middle;
+}
+
+#quit {
+    margin: 4;
+    width: 20;
+}

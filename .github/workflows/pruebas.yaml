@@ -1,11 +1,8 @@
 name: Aseguramiento de la calidad de código
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
     branches:
-      - main
+      - '*'
 permissions:
   contents: write
   checks: write

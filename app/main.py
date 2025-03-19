@@ -1,101 +1,118 @@
+"""Main module for the FastAPI application.
+
+This module is responsible for setting up and running the FastAPI application.
+It includes the following key functionalities:
+
+- Loading and registering routes from all modules in the 'app.proyectos' package.
+- Creating the database and tables on startup using lifecycle events.
+
+Functions:
+    - `load_routes(app: FastAPI)`: Loads and registers routes from all modules in
+      the 'app.proyectos' package. This function is responsible for locating the
+      routes you define in your project modules and including them in the main
+      application.
+    - `lifespan_cycle(app: FastAPI)`: Lifecycle event handler for the FastAPI
+      application. This function locates all the database models in your project
+      and creates the tables in the database when the server starts up.
+
+Classes:
+    - None
+
+Dependencies:
+    - `fastapi`: FastAPI framework for building APIs.
+    - `importlib`: Standard library module for importing modules.
+    - `pkgutil`: Standard library module for working with packages.
+    - `app.config`: Module containing application settings.
+    - `app.db`: Module containing database setup functions.
+    - `app.log_utils`: Module containing logging configuration.
+
+Author:
+    - Noe Nieto <noemisael.nieto@itmexicali.edu.mx>
+
+License:
+    - MIT License
+"""
+
 import importlib
-import logging
 import pkgutil
-from functools import lru_cache
-from typing import Annotated
 
-from fastapi import Depends, FastAPI
-from pydantic_settings import BaseSettings
-from sqlmodel import Session, SQLModel, create_engine
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from fastapi import FastAPI
 
-logger = logging.getLogger("fastapi")
-logger.setLevel(logging.DEBUG)
+from app.config import settings
+from app.db import initialize_database
+from app.log_utils import logger
 
 
-class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
-    verbose: bool = True
-    database_url: str = "sqlite:///./database.db"
-    site_title: str = "Unidad 3 - Aplicaciones web con REST"
-    site_description: str = (
-        "Esta aplicación reune todos los proyectos de los estudiantes de la unidad 3"
-    )
-    site_version: str = "0.1"
+def load_routes(app: FastAPI):
+    """Load and register routes from all modules in the 'app.proyectos' package.
 
+    This function dynamically imports and registers API and frontend routes
+    from all modules in the 'app.proyectos' package. It looks for 'routes.py'
+    files in each module and includes the routers defined in them.
 
-settings = Settings()
-engine = create_engine(settings.database_url, connect_args = {"check_same_thread": False})
+    Args:
+        app (FastAPI): The FastAPI application instance.
 
-
-@lru_cache()
-def get_settings() -> Settings:
-    """Configure the program settings."""
-    return Settings()
-
-
-def create_db_and_tables():
-    """This is a callback function that creates the database and tables on startup."""
-    package = importlib.import_module("app.proyectos")
-    for _, module_name, is_pkg in pkgutil.iter_modules(package.__path__):
-        if not is_pkg:
-            continue
-        spec = importlib.util.find_spec(f"app.proyectos.{module_name}.models")
-        if spec is None:
-            logger.warning(
-                f"El módulo {module_name} no tiene un archivo models.py. Ignorando..."
-            )
-            continue
-        models_module = spec.loader.load_module()
-        for obj in [getattr(models_module, a) for a in dir(models_module) if not a.startswith("__")]:
-            if isinstance(obj, type) and issubclass(obj, SQLModel) and hasattr(obj, "__table__"):
-                # Import the module to populate the metadata from SQLModel
-                # See https://sqlmodel.tiangolo.com/tutorial/create-db-and-table/?h=metadat#sqlmodel-metadata-order-matters
-                importlib.import_module(f"app.proyectos.{module_name}.models")
-    
-    engine = create_engine(settings.database_url)
-    SQLModel.metadata.create_all(
-        engine,
-    )
-
-
-def get_session():
     """
-    Esta función crea una sesión (conexión) a la base de datos y la cierra al finalizar.
-    """
-    with Session(engine) as session:
-        yield session
-
-
-DbSession = Annotated[Session, Depends(get_session)]
-
-def recolecta_rutas(app: FastAPI):
     package = importlib.import_module("app.proyectos")
 
     for _, module_name, is_pkg in pkgutil.iter_modules(package.__path__):
         if not is_pkg:
             continue
-        spec = importlib.util.find_spec(f"app.proyectos.{module_name}.routes")
-        if spec is None:
+        routes_module = f"app.proyectos.{module_name}.routes"
+        try:
+            routes = importlib.import_module(routes_module)
+            if hasattr(routes, "api_router"):
+                app_path = f"/api/v1/{module_name}"
+                logger.info(f"Instalando ruta de API en {app_path}")
+                app.include_router(routes.api_router, prefix=app_path)
+            if hasattr(routes, "frontend_router"):
+                app_path = f"/{module_name}"
+                logger.info(f"Instalando ruta de frontend en  {app_path}")
+                app.include_router(routes.frontend_router, prefix=app_path)
+        except ImportError:
             logger.warning(
-                f"El módulo {module_name} no tiene un archivo routes.py. Ignorando..."
+                f"El módulo {module_name} no tiene un archivo routes.py o no se puede importar. Ignorando..."
             )
-            continue
-        route_module = spec.loader.load_module()
-        if hasattr(route_module, "router"):
-            app_path = f"/api/v1/{module_name}"
-            logger.info(f"Instalando app  en {app_path}")
-            app.include_router(route_module.router, prefix=app_path)
 
 
 async def lifespan_cycle(app: FastAPI):
-    create_db_and_tables()
-    recolecta_rutas(app)
+    """Lifecycle event handler for the FastAPI application.
+
+    This function is called during the startup and shutdown of the FastAPI
+    application. It creates the database and tables, and loads the routes.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+
+    Yields:
+        None
+
+    For more information on the lifespan parameter, see:
+    https://fastapi.tiangolo.com/advanced/events/#lifespan
+
+    """
+    logger.info("lifespan_cycle setup")
+    initialize_database()
+    load_routes(app)
     yield
+    logger.info("lifespan_cycle teardown")
+
 
 app = FastAPI(
     title=settings.site_title,
+    summary=settings.site_summary,
     description=settings.site_description,
     version=settings.site_version,
     lifespan=lifespan_cycle,
+    contact={
+        "name": "Documentación del proyecto",
+        "url": "https://misaelnieto.github.io/itm_2005_soa_u3/",
+    },
+    openapi_tags=[
+        {
+            "name": "Alcancia",
+            "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
+        },
+    ],
 )

@@ -12,9 +12,15 @@ dependencies = [
     "mkdocs-material>=9.6.8",
     "mkdocstrings[python]>=0.29.0",
     "pydantic-settings>=2.8.1",
+    "pytest>=8.3.5",
     "pytest-coverage>=0.0",
     "sqlmodel>=0.0.24",
+    "textual>=2.1.2",
+    "textual-dev>=1.7.0",
     "typer>=0.15.2",
+]
+authors = [
+    {name="Noe Nieto", email="noemisael.nieto@itmexicali.edu.mx"},
 ]
 
 [build-system]
@@ -22,7 +28,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["app"]
+packages = [
+    "app",
+    "frontend",
+]
+
+[project.scripts]
+alcancia = "frontend.alcancia:run_app"
 
 [tool.pytest.ini_options]
 testpaths = [
@@ -35,6 +47,7 @@ addopts = [
     "--junitxml=pytest.xml",
     "--tb=short",
     "--cov=app",
+    "--cov=frontend",
     "--cov-report=term-missing",
     "--cov-report=xml",
     "--cov-report=json",
@@ -42,3 +55,49 @@ addopts = [
 log_cli = true
 log_cli_level = "INFO"
 
+
+[tool.ruff]
+line-length = 120
+extend-exclude = [
+    ".vscode",
+    ".venv"
+]
+output-format = "grouped"
+
+[tool.ruff.lint]
+extend-select = [
+  "A", # flake8-builtins
+  "ARG", # flake8-arguments
+  "B",
+  "B", # flake8-bugbear
+  "BLE", # flake8-blind-except
+  "C", # flake8-comprehensions
+  "C", # mccabe complexity check
+  "COM", # flake8-commas
+  "D",   # pydocstyle
+  "ERA",  # eradicate
+  "FAST", # FastAPI
+  "FBT", # flake8-boolean-trap
+  "FIX", # flake8-fixme
+  "G010", "G201", # "flake8-logging-format"
+  "I", # isort
+  "ICN", #flake8-import-conventions
+  "LOG", #flake8-logging-format
+  "PIE", # flake8-pie
+  "PT", # flake8-pytest-style
+  "PTH", # flake8-use-pathlib
+  "RET", # flake8-return
+  "S", # flake8-bandit
+  "SIM", # flake8-simplify
+  "T10", #flake-debugger
+  "T20", # flake8-print: No print statements
+  "UP",  # pyupgrade
+]
+ignore = [
+    "D104", # Missing docstring in public package
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = [
+  "S101",   # assertions 
+]

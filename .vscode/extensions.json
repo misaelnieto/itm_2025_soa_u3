@@ -4,6 +4,7 @@
         "github.vscode-github-actions",
         "ms-python.python",
         "ms-python.debugpy",
-        "charliermarsh.ruff"
+        "charliermarsh.ruff",
+        "textualize.textual-syntax-highlighter"
     ]
 }
