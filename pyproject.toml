@@ -34,7 +34,7 @@ packages = [
 ]
 
 [project.scripts]
-alcancia = "frontend.alcancia:run_app"
+alcancia = "frontend.nnieto.alcancia:run_app"
 
 [tool.pytest.ini_options]
 testpaths = [

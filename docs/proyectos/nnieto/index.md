@@ -159,7 +159,8 @@ El código fuente del frontend se encuentra en el archivo `/frontend/alcancia.py
 
 
 ### Cómo arrancar el frontend
-Para iniciar el frontend, utiliza el siguiente comando:
+
+Primero arranca el backend, luego abre otra terminal y utiliza el siguiente comando:
 
 ```bash
 uv run alcancia

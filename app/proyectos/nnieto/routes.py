@@ -1,40 +1,29 @@
 """API routes for managing transactions in the "alcancia" (piggy bank) application.
 
 Routes:
-    - GET /alcancia/transactions: Retrieve the list of all transactions.
-    - PUT /alcancia/transaction/{txn_type}/{quantity}: Create a new transaction (deposit or withdraw).
-    - GET /alcancia/saldo/{dsds}: Calculate the current balance (deprecated).
-    - POST /alcancia/deposito: Make a deposit (deprecated).
-    - POST /alcancia/retiro: Make a withdrawal (deprecated).
-    - GET /alcancia/movimientos: Retrieve the list of all transactions (deprecated).
+    - `GET /alcancia/transactions`: Retrieve the list of all transactions.
+    - `PUT /alcancia/transaction/{txn_type}/{quantity}`: Create a new transaction (deposit or withdraw).
+
 Functions:
-    - _compute_balance(db: Session) -> int: Compute the balance by summing up the amounts of all transactions in the database.
-    - transactions_list(db: DbSession) -> list[Transaction]: Retrieve the list of all transactions.
-    - create_transaction(txn_type: TransactionType, quantity: PositiveInt, db: DbSession) -> TransactionResponse: Create a new transaction.
-    - saldo(db: DbSession) -> RespuestaSaldo: Calculate the current balance (deprecated).
-    - deposito(cantidad: int, db: DbSession) -> TransactionResponse: Make a deposit (deprecated).
-    - retiro(cantidad: int, db: DbSession) -> TransactionResponse: Make a withdrawal (deprecated).
-    - movimientos(db: DbSession) -> list[Transaction]: Retrieve the list of all transactions (deprecated).
+    - `compute_balance`: Compute the balance by summing up the amounts of all transactions in the database.
+    - `transactions_list`: Retrieve the list of all transactions.
+    - `create_transaction`: Create a new transaction (Deposit/Withdraw)
+
 Dependencies:
-    - fastapi: FastAPI framework for building APIs.
-    - pydantic: Data validation and settings management using Python type annotations.
-    - sqlalchemy: SQL toolkit and Object-Relational Mapping (ORM) library.
-    - sqlmodel: SQL databases in Python, designed to be compatible with FastAPI.
-    - app.main: Main application module containing the database session.
-    - .models: Module containing the Transaction model.
-    - .schemas: Module containing the response schemas (RespuestaSaldo, TransactionResponse, TransactionResult, TransactionType).
-Author:
-    - Noe Nieto <nnieto@noenieto.com>
-License:
-    - MIT License
+    - [fastapi](https://fastapi.tiangolo.com/): FastAPI framework for building APIs.
+    - [pydantic](https://docs.pydantic.dev/): Data validation and settings management using Python type annotations.
+    - [sqlalchemy](https://www.sqlalchemy.org/): SQL toolkit and Object-Relational Mapping (ORM) library.
+    - [sqlmodel](https://sqlmodel.tiangolo.com/): SQL databases in Python, designed to be compatible with FastAPI.
+    - `app.main`: Main application module containing the database session.
+    - `.models`: Module containing the Transaction model.
+    - `.schemas`: Module containing the response schemas (`TransactionResponse`, `TransactionResult`, Transaction`Type).
 """
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import PositiveInt, Field
+from pydantic import PositiveInt
 from sqlalchemy import func
 from sqlmodel import select
-from typing_extensions import Doc
 
 from app.db import DbSession
 

@@ -31,7 +31,7 @@ from textual.screen import ModalScreen
 from textual.validation import Number
 from textual.widgets import Button, DataTable, Digits, Header, Input, Label, LoadingIndicator
 
-from frontend.utils import datefmt, moneyfmt
+from .utils import datefmt, moneyfmt
 
 API_BASE_URL = "http://127.0.0.1:8000"
 

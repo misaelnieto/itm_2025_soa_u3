@@ -17,11 +17,16 @@ nav:
     - Paso 8 - Documentación: tutorial/mkdocs.md
     - Paso 9 - Pull Request: tutorial/pr.md
   - Herramientas:
-    - webservice: herramientas/webservice.md
+    - fastapi: herramientas/fastapi.md
+    - mkdocs: herramientas/mkdocs.md
+    - pytest: herramientas/pytest.md
   - Proyectos:
       - Todos los proyectos: proyectos/index.md
       - Alcancía(Proyecto de referencia): 
         - Presentación: proyectos/nnieto/index.md
+        - Autodocs backend: proyectos/nnieto/backend.md
+        - Autodocs frontend: proyectos/nnieto/frontend.md
+        - Autodocs pruebas: proyectos/nnieto/tests.md
 
 theme:
   name: material
@@ -50,6 +55,9 @@ extra_css:
 markdown_extensions:
   - toc:
       permalink: "#"
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - admonition
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -66,8 +74,12 @@ markdown_extensions:
 
 plugins:
 - mkdocstrings:
+    enable_inventory: true
+    default_handler: python
     handlers:
       python:
+        options:
+          show_source: false
         locale: es
         paths:
           - tests
