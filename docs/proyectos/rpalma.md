@@ -1,2 +1,2 @@
-# Proyecto Contactos
+# Agenda de contactos
 

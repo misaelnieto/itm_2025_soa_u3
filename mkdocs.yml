@@ -18,7 +18,11 @@ nav:
     - Paso 9 - Pull Request: tutorial/pr.md
   - Herramientas:
     - webservice: herramientas/webservice.md
-  - Proyectos: servicios/index.md
+  - Proyectos:
+      - Todos los proyectos: proyectos/index.md
+      - Alcancía(Proyecto de referencia): 
+        - Presentación: proyectos/nnieto/index.md
+
 theme:
   name: material
   language: es
@@ -38,7 +42,10 @@ theme:
     - navigation.path
     - toc.integrate
     - navigation.top
+    - navigation.sections
 
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
   - toc:
@@ -52,6 +59,10 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 plugins:
 - mkdocstrings:
