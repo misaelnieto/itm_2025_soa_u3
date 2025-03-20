@@ -5,6 +5,8 @@
 !!! tip "Descripción General"
     El proyecto **Alcancía** es un ejemplo práctico de cómo crear un API REST utilizando Python y FastAPI. Incluye un backend, un frontend y pruebas automatizadas.
 
+---
+
 ## Descripción general del funcionamiento del backend y el frontend
 
 El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los archivos de implementación se encuentran en la ruta `/app/proyectos/nnieto`. Ahi se definen tres operaciones principales:
@@ -15,7 +17,7 @@ El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los ar
 
 El frontend está constrido con la ayuda de la librería [Textual](https://textual.textualize.io/) para la construir la interfaz grafica de usuario y [httpx](https://www.python-httpx.org/quickstart/) para comunicarse con la base de datos. El frontend se conecta al backend mediante la url `http://127.0.0.1:8000/api/v1/nnieto/alcancia`.
 
-## Carga inicial de datos
+### Carga inicial de datos
 
 Cuando el usuario arranca el programa de frontend, este se conecta al backend para obtener la lista de transacciones.
 
@@ -43,7 +45,7 @@ sequenceDiagram
     end
 ```
 
-## Creación de depositos
+### Creación de depositos
 
 Una vez que el usuario arranco el frontend y los datos iniciales han sido cargados, el usuario puede hacer un deposito en la alcancia mediante el boton *Deposito*. Cuando el usuario pica el boton se le muestra el siguiente formulario.
 
@@ -79,7 +81,7 @@ Finalmente, la aplicacion de frontend de alcancia luce asi despues de varios dep
 ![Captura de pantalla despues de varios depositos](screenshot_03.svg)
 
 
-## Creacion de retiros
+### Creacion de retiros
 
 La ultima operacion es retiro. Tanto el backend como el frontend tienen validacion para no permitir retirar mas dinero del que hay en la alcancia. He aqui el diagrama de secuencia de una operacion de retiro.
 
@@ -107,31 +109,25 @@ La inerfaz grafica de retiro es bastante similar a la de deposito. Asi se ve la 
 
 ![Estado de la aplicacion despues del retiro](screenshot_04.svg)
 
-## Comentarios acerca del backend
+---
+
+## Backend - Detalle
 
 El código fuente del backend se encuentra en el módulo `app/proyectos/nnieto`. Está desarrollado utilizando FastAPI y expone tres rutas:
 
-- **`GET /alcancia`**: Obtiene el estado actual de la alcancía.
-- **`POST /alcancia/depositar`**: Permite depositar una cantidad en la alcancía.
-- **`POST /alcancia/retirar`**: Permite retirar una cantidad de la alcancía.
+- **`GET /alcancia`**: Obtiene el estado actual de la alcancía. [Link a la funcion](backend.md#app.proyectos.nnieto.routes.transactions_list)
+- **`POST /alcancia/depositar`**: Permite depositar una cantidad en la alcancía. [Link a la funcion](backend.md#app.proyectos.nnieto.routes.api_put_transaction)
+- **`POST /alcancia/retirar`**: Permite retirar una cantidad de la alcancía. [Link a la funcion](backend.md#app.proyectos.nnieto.routes.api_put_transaction)
 
+A continuacion se muestran los links a la documentación de cada submódulo.
 
-::: app
+[Documentación de rutas](autodocs.md#routes){ .md-button .md-button--primary}
+[Documentación de modelos](autodocs.md#models){ .md-button .md-button--primary}
+[Documentación de esquemas](autodocs.md#schemas){ .md-button .md-button--primary}
 
-
-
-### Diagrama de Clases
-```mermaid
-classDiagram
-    class Alcancia {
-        - float saldo
-        + depositar(cantidad: float)
-        + retirar(cantidad: float)
-        + obtener_saldo() float
-    }
-```
 
 ### Cómo arrancar el backend
+
 Para iniciar el backend, utiliza el siguiente comando:
 
 ```bash
@@ -144,10 +140,7 @@ uv run fastapi run
 
 Las pruebas automatizadas del backend se encuentran en el directorio `/tests/nnieto`. Estas pruebas verifican el correcto funcionamiento de las rutas y la lógica de negocio.
 
-```python
-# Autogenerado con mkdocstrings
-::: tests.nnieto
-```
+[Documentación de funciones de prueba](tests.md){ .md-button .md-button--primary}
 
 ### Cómo ejecutar las pruebas
 Para ejecutar las pruebas, utiliza el siguiente comando:
@@ -162,10 +155,8 @@ uv run pytest
 
 El código fuente del frontend se encuentra en el archivo `/frontend/alcancia.py`. Este módulo interactúa con el backend para mostrar el estado de la alcancía y permitir operaciones como depósitos y retiros.
 
-```python
-# Autogenerado con mkdocstrings
-::: frontend.alcancia
-```
+[Documentación de Funciones del frontend](frontend.md){ .md-button .md-button--primary}
+
 
 ### Cómo arrancar el frontend
 Para iniciar el frontend, utiliza el siguiente comando:
@@ -173,22 +164,3 @@ Para iniciar el frontend, utiliza el siguiente comando:
 ```bash
 uv run alcancia
 ```
-
-```mermaid
-sequenceDiagram
-    participant Usuario
-    participant Frontend
-    participant Backend
-    Usuario->>Frontend: Solicita estado de la alcancía
-    Frontend->>Backend: GET /alcancia
-    Backend-->>Frontend: Estado actual
-    Frontend-->>Usuario: Muestra estado
-```
-
----
-
-!!! tip "Recursos Adicionales"
-    - [Documentación de FastAPI](https://fastapi.tiangolo.com/)
-    - [MkDocs Material](https://squidfunk.github.io/mkdocs-material/)
-
-
