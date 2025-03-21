@@ -72,7 +72,7 @@ def load_routes(app: FastAPI):
                 app.include_router(routes.frontend_router, prefix=app_path)
         except ImportError:
             logger.warning(
-                f"El módulo {module_name} no tiene un archivo routes.py o no se puede importar. Ignorando..."
+                f"El módulo {module_name} no tiene un archivo routes.py o no se puede importar. Ignorando...",
             )
 
 

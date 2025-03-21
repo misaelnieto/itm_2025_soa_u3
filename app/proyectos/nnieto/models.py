@@ -1,23 +1,28 @@
-"""All the database models here"""
+"""All the database models here."""
 from datetime import UTC, datetime
 
 from sqlmodel import Field, SQLModel
 
 
-def now():
-    
+def now_utc():
+    """Get the current UTC datetime.
+
+    Returns:
+        datetime: The current datetime in UTC.
+
+    """
     return datetime.now(UTC)
 
 
 class Transaction(SQLModel, table=True):
-    """Modelo para registrar movimientos en la base de datos"""
+    """Modelo para registrar movimientos en la base de datos."""
 
     __tablename__ = "alcancia_transaction"
     id: int | None = Field(default=None, primary_key=True)
     amount: int = Field(title="Cantidad", nullable=False)
     created_at: datetime = Field(
         title="Created At",
-        default_factory=now,
+        default_factory=now_utc,
         nullable=False,
     )
 

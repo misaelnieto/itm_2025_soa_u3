@@ -1,19 +1,28 @@
-from fastapi import status, HTTPException
-import pytest
+"""# 🧪 Test Suite for Alcancia API.
+
+This module contains tests for the Alcancia API endpoints. It verifies the following:
+- ✅ The behavior of the API when the database is empty.
+- 💰 Deposit transactions.
+- 💸 Withdrawal transactions.
+- 🔍 Validation of input data for transactions.
+"""
+
+from fastapi import status
+
 from app.proyectos.nnieto.schemas import TransactionResponse, TransactionResult, TransactionType
 
 BASE_PATH = "/api/v1/nnieto/alcancia"
 
 
 def test_empty_database(rest_api):
-    """Tests the API with an empty database."""
+    """🗃️ Tests the API with an empty database."""
     response = rest_api.get(f"{BASE_PATH}/transactions")
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == []
 
 
 def test_transaction_deposit(rest_api):
-    """Test deposits."""
+    """💰 Test deposit transactions."""
     # First, the Alcancia is empty
     response = rest_api.get(f"{BASE_PATH}/transactions")
     assert response.status_code == status.HTTP_200_OK
@@ -31,7 +40,7 @@ def test_transaction_deposit(rest_api):
 
 
 def test_transaction_withdraw(rest_api):
-    """Test withdrawal."""
+    """💸 Test withdrawal transactions."""
     # First, the Alcancia is empty
     response = rest_api.get(f"{BASE_PATH}/transactions")
     assert response.status_code == status.HTTP_200_OK
@@ -88,6 +97,7 @@ def test_transaction_withdraw(rest_api):
 
 
 def test_transaction_validation(rest_api):
+    """🔍 Test validation of transaction inputs."""
     # We cannot deposit zero cents
     response = rest_api.put(
         f"{BASE_PATH}/transaction/{TransactionType.deposit}/0",
