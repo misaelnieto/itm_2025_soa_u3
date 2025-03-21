@@ -86,6 +86,19 @@ En la unidad 2, escribiste un servicio web **SOAP** utilizando Python y la libre
   - Usa cualquier otra librería de Python que necesites.
 - **Uso en el proyecto**: Puedes usar **Textual** para crear un frontend para tu proyecto. Si decides usar esta librería, te recomiendo que uses **httpx** para comunicarte con tu backend.
 
+#### [Mkdocs](https://www.mkdocs.org/), [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/) y [mkdocstrings](https://mkdocstrings.github.io/)
+
+- **Descripción**: Un conjunto de herramientas que se usan para generar la documentación del proyecto.
+- **Uso en el proyecto**: Estas herramientas ya están integradas en tu entorno de desarrollo, por lo que solo necesitas enfocarte en escribir la documentación de tu proyecto en formato Markdown. 
+- **Características de cada librería**:
+  - **Mkdocs**: Genera sitios web estáticos a partir de archivos Markdown.
+  - **Mkdocs-material**: Proporciona un tema moderno y personalizable para la documentación.
+  - **mkdocstrings**: Permite generar documentación automáticamente a partir de las docstrings de tu código.
+- **Ventajas**:
+  - Fácil de usar y configurar.
+  - Generación automática de documentación técnica basada en tu código.
+  - Diseño profesional y responsivo.
+
 ---
 
 ## Proyecto de referencia: Alcancía
