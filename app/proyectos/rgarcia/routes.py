@@ -17,7 +17,7 @@ Dependencies:
     - `.schemas`: Module containing the response schemas (`TransactionResponse`, `TransactionResult`, Transaction`Type).
 """
 
-from fastapi import APIRouter, status
+from fastapi import APIRouter, HTTPException, status
 from sqlmodel import select
 
 from app.db import DbSession
@@ -55,7 +55,10 @@ async def get_receta(
 
     # If the recipe does not exist, return a non_existant response
     if not receta_db:
-        return RecipeResponse(result=RecipeResult.non_existant)
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Recipe with ID {receta_id} not found",
+        )
     
     return receta_db
 
@@ -80,7 +83,7 @@ async def upload_receta(
     return RecipeResponse(result=RecipeResult.successful)
 
 
-@api_router.put("/modificar", tags=["Recetas"], status_code=status.HTTP_200_OK)
+@api_router.put("/modificar", tags=["Recetas"], status_code=status.HTTP_204_NO_CONTENT)
 async def update_receta(
     receta: Receta,  
     db: DbSession,   
@@ -91,7 +94,10 @@ async def update_receta(
 
     # If the recipe does not exist, return a non_existant response
     if not receta_db:
-        return RecipeResponse(result=RecipeResult.non_existant)
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Recipe with ID {receta.id} not found",
+        )
 
     receta_db.nombre = receta.nombre
     receta_db.descripcion = receta.descripcion
@@ -104,7 +110,7 @@ async def update_receta(
     return RecipeResponse(result=RecipeResult.successful)
 
 
-@api_router.delete("/eliminar", tags=["Recetas"], status_code=status.HTTP_200_OK)
+@api_router.delete("/eliminar", tags=["Recetas"], status_code=status.HTTP_204_NO_CONTENT)
 async def delete_receta(
     receta_id: int,  
     db: DbSession,  
@@ -115,7 +121,10 @@ async def delete_receta(
 
     # If the recipe does not exist, return a non_existant response
     if not receta_db:
-        return RecipeResponse(result=RecipeResult.non_existant)
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Recipe with ID {receta_id} not found",
+        )
 
     db.delete(receta_db)
     db.commit()
