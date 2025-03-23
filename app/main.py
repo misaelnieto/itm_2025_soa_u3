@@ -114,5 +114,9 @@ app = FastAPI(
             "name": "Alcancia",
             "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
         },
+        {
+            "name": "Recetas",
+            "description": "API para el proyecto de **Recetas**. Contiene rutas para gestionar recetas.",
+        },
     ],
 )
