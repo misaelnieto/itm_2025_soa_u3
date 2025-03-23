@@ -1,17 +1,20 @@
-"""# 🧪 Test Suite for Alcancia API.
+"""# 🧪 Test Suite for Recetas API.
 
-This module contains tests for the Alcancia API endpoints. It verifies the following:
-- ✅ The behavior of the API when the database is empty.
-- 💰 Deposit transactions.
-- 💸 Withdrawal transactions.
-- 🔍 Validation of input data for transactions.
+This module contains tests for the Recetas API endpoints. It verifies the following:
+- Acces to the list of recipes
+- Access to an existing recipe
+- Error when trying to access a non-existent recipe
+- Update an existing recipe
+- Error when trying to update a non-existent recipe
+- Delete an existing recipe
+- Error when trying to delete a non-existent recipe
+- Test the now_utc function
 """
 
-from datetime import UTC, datetime, timezone
-from unittest.mock import patch
+from datetime import UTC, datetime
+
 from fastapi import status
 from fastapi.testclient import TestClient
-from pydantic import parse_obj_as
 
 from app.proyectos.rgarcia.models import Receta, now_utc
 
