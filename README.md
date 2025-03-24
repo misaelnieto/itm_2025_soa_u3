@@ -1,6 +1,7 @@
 # Arquitectura Orientada a Servicios - Unidad 3
 
-> [!TIP] Instituto Tecnológico de Mexicali
+> [!TIP]
+> ## Instituto Tecnológico de Mexicali
 > - **Horario**: Lunes-Viernes 5:00-6:00 pm
 > - **Periodo**: 2005-1
 
