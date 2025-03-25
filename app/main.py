@@ -42,6 +42,8 @@ from app.config import settings
 from app.db import initialize_database
 from app.log_utils import logger
 
+from fastapi.middleware.cors import CORSMiddleware
+
 
 def load_routes(app: FastAPI):
     """Load and register routes from all modules in the 'app.proyectos' package.
@@ -115,4 +117,18 @@ app = FastAPI(
             "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
         },
     ],
+)
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "https://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
