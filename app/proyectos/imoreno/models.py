@@ -19,7 +19,7 @@ class Operation(SQLModel, table=True):
     """Model to register operations in the database."""
 
     __tablename__ = "hotel_operacion"
-    id: int | None = Field(default=None, primary_key=True)
+    client_id: int | None = Field(default=None, primary_key=True)
     first_name: str = Field(title="First Name", nullable=False)
     middle_name: str = Field(title="Middle Name", nullable=False)
     last_name: str = Field(title="Last Name", nullable=False)

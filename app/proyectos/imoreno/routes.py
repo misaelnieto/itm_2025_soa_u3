@@ -11,7 +11,7 @@ from sqlmodel import select
 from app.db import DbSession
 
 from .models import Operation
-from .schemas import ClientUpdate, OperationResponse, OperationResult
+from .schemas import ClientUpdate, OperationResponse, OperationResult, OperationType
 
 api_router = APIRouter(
     prefix="/hotel",
@@ -41,33 +41,35 @@ def operations_list(
 
     This endpoint returns all operations recorded in the Alcancia application.
     - **Returns**: `list[Operation]`: A list of all operations in the database.
-    """  # noqa: D206
+    """
     return db.exec(select(Operation)).all()
 
-@api_router.put("/operations/update/{client_id}")
-def update_client(client_id: int, client_update: ClientUpdate, db: DbSession) -> OperationResponse:
+@api_router.put("/operations/{opType}/{client_id}")
+def update_client(client_id: int, client_update: ClientUpdate, db: DbSession, opType: OperationType) -> OperationResponse:
     """Update a client's information in the hotel database.
 
     Args:
         client_id (int): The ID of the client to update.
         client_update (ClientUpdate): The new data for the client.
         db (DbSession): The database session used to execute the query.
+        opType (OperationType): The type of operation to perform.
 
     Returns:
         OperationResponse: The result of the update operation.
 
     """
-    client = db.get(Operation, client_id)
-    if not client:
-        raise HTTPException(status_code=404, detail="Client not found")
+    if opType == OperationType.update:
+        client = db.get(Operation, client_id)
+        if not client:
+            raise HTTPException(status_code=404, detail="Client not found")
 
-    update_data = client_update.model_dump(exclude_unset=True)
-    for key, value in update_data.items():
-        setattr(client, key, value)
+        update_data = client_update.model_dump(exclude_unset=True)
+        for key, value in update_data.items():
+            setattr(client, key, value)
 
-    db.add(client)
-    db.commit()
-    db.refresh(client)
+        db.add(client)
+        db.commit()
+        db.refresh(client)
 
     return OperationResponse(
         result=OperationResult.success,
