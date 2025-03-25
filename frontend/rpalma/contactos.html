@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Agenda de contactos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    const API_BASE_URL = "http://127.0.0.1:8000";
+
+    // Fetch contacts from the backend
+    function loadContacts() {
+        $.get(`${API_BASE_URL}/get_contacts`, function(data) {
+            let rows = '';
+            data.forEach(contact => {
+                rows += `<tr>
+                    <td>${contact.id}</td>
+                    <td>${contact.nombre}</td>
+                    <td>${contact.telefono}</td>
+                    <td>${contact.correo}</td>
+                    <td>
+                        <a class="edit" title="Edit" data-toggle="tooltip" data-id="${contact.id}"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip" data-id="${contact.id}"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                </tr>`;
+            });
+            $("table tbody").html(rows);
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    }
+
+    loadContacts();
+
+    // Search contacts
+    $(".btn-search").click(function() {
+        const query = $(".search-input").val();
+        $.get(`${API_BASE_URL}/search_contacts?query=${query}`, function(data) {
+            let rows = '';
+            data.forEach(contact => {
+                rows += `<tr>
+                    <td>${contact.id}</td>
+                    <td>${contact.nombre}</td>
+                    <td>${contact.telefono}</td>
+                    <td>${contact.correo}</td>
+                    <td>
+                        <a class="edit" title="Edit" data-toggle="tooltip" data-id="${contact.id}"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip" data-id="${contact.id}"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                </tr>`;
+            });
+            $("table tbody").html(rows);
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    });
+
+    // Add new contact
+    $(".btn_new").click(function() {
+        const newRow = `<tr>
+            <td><input type="text" class="form-control" name="id"></td>
+            <td><input type="text" class="form-control" name="nombre"></td>
+            <td><input type="text" class="form-control" name="telefono"></td>
+            <td><input type="text" class="form-control" name="correo"></td>
+            <td>
+                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            </td>
+        </tr>`;
+        $("table tbody").append(newRow);
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(document).on("click", ".add", function() {
+        const row = $(this).closest("tr");
+        const contact = {
+            id: row.find('input[name="id"]').val(),
+            nombre: row.find('input[name="nombre"]').val(),
+            telefono: row.find('input[name="telefono"]').val(),
+            correo: row.find('input[name="correo"]').val()
+        };
+        $.post(`${API_BASE_URL}/add_contact`, contact, function() {
+            loadContacts();
+        });
+    });
+
+    // Edit contact
+    $(document).on("click", ".edit", function() {
+        const row = $(this).closest("tr");
+        const id = $(this).data("id");
+        row.find("td:not(:last-child)").each(function() {
+            const value = $(this).text();
+            $(this).html(`<input type="text" class="form-control" value="${value}">`);
+        });
+        $(this).replaceWith(`<a class="save" title="Save" data-toggle="tooltip" data-id="${id}"><i class="material-icons">&#xE161;</i></a>`);
+    });
+
+    $(document).on("click", ".save", function() {
+        const row = $(this).closest("tr");
+        const id = $(this).data("id");
+        const contact = {
+            id: id,
+            nombre: row.find('input').eq(0).val(),
+            telefono: row.find('input').eq(1).val(),
+            correo: row.find('input').eq(2).val()
+        };
+        $.post(`${API_BASE_URL}/edit_contact/${id}`, contact, function() {
+            loadContacts();
+        });
+    });
+
+    // Delete contact
+    $(document).on("click", ".delete", function() {
+        const id = $(this).data("id");
+        $.post(`${API_BASE_URL}/delete_contact/${id}`, function() {
+            loadContacts();
+        });
+    });
+});
+</script>
+</head>
+<body>
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <h2>Contactos <b>Agenda</b></h2>
+                </div>
+               
+            </div>
+            <div class="buscador_addNew">
+                <div class="filtro">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-input" placeholder="Filtrar por nombre">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary btn-search" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="agregar">
+                    <button type="button" class="btn_new"><i class="fa fa-plus"></i> Add New</button>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>     
+</body>
+</html>

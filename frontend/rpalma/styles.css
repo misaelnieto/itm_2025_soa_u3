@@ -1,0 +1,170 @@
+body {
+    color: #f1f4fb;
+    background: #1b2533;
+    font-family: 'Open Sans', sans-serif;
+}
+.table-wrapper {
+    width: 100%;
+    margin: 30px auto;
+    background: #2d3b4f;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border-radius: 10px;
+}
+.table-title {
+    width:100%;
+    padding-bottom: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 36px;
+}
+
+
+table.table {
+    table-layout: fixed;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    color:white;
+    margin-right:20px;
+}
+
+table.table th:nth-child(1), table.table td:nth-child(1) {
+    width: 10%; /* La primera columna ocupa el 10% del ancho total */
+    text-align: center;
+}
+
+table.table th:nth-child(2) {
+    width: 30%; /* La segunda columna ocupa el 40% del ancho total */
+}
+
+table.table th:nth-child(3) {
+    width: auto; /* La tercera columna ocupa el 30% del ancho total */
+}
+
+table.table th:nth-child(4) {
+    width: auto; /* La cuarta columna ocupa el 20% del ancho total */
+}
+
+table.table th:nth-child(5) {
+    width: 10%; /* La cuarta columna ocupa el 20% del ancho total */
+}
+
+table.table th{
+
+    background-color: #011f30;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+table.table tr:nth-child(odd) {
+    background-color: #415572;
+}
+
+table.table tr:nth-child(even) {
+    background-color: #2f4360;
+}
+
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}    
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #f34021;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}    
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+}
+
+.btn_new {
+    background-color: #27C46B;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 20px 15px 20px 0;
+    font-size: 14px;
+    float:right;
+}
+.btn_new:hover {
+    background-color: #1e9c5a;
+}
+
+.buscador_addNew{
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center; /* Alinea verticalmente al centro */
+}
+
+.filtro{
+    margin-left: 15px;
+
+}
+
+.filtro .form-control{
+    background-color: #3f526c;
+    color: #ffffff;
+    border: gray 1px solid;
+    border-radius: 15px;
+}
+
+.filtro .form-control::placeholder{
+    color: #d6d6d6;
+}
+
+.filtro .btn{
+    background-color: #011f30;
+    color: #ffffff;
+    border: gray 1px solid;
+    border-radius: 15px;
+}
+
+.filtro .btn:hover{
+    background-color: #2f1a73;
+}
