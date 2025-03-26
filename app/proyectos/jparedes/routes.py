@@ -39,7 +39,9 @@ api_router = APIRouter(
 
 
 @api_router.post(
-    "/", tags=["Libros"], status_code=status.HTTP_201_CREATED, response_model=BookRead
+    "/",
+    tags=["Libros"],
+    status_code=status.HTTP_201_CREATED,
 )
 def create_libro(libro: BookCreate, db: DbSession) -> BookRead:
     """Crear un nuevo libro en la base de datos.
@@ -59,7 +61,7 @@ def create_libro(libro: BookCreate, db: DbSession) -> BookRead:
     return new_libro
 
 
-@api_router.get("/", tags=["Libros"], response_model=list[BookRead])
+@api_router.get("/", tags=["Libros"])
 def get_libros(db: DbSession) -> list[BookRead]:
     """Obtener la lista de todos los libros.
 
@@ -73,7 +75,7 @@ def get_libros(db: DbSession) -> list[BookRead]:
     return db.exec(select(Book)).all()
 
 
-@api_router.get("/{libro_id}", tags=["Libros"], response_model=BookRead)
+@api_router.get("/{libro_id}", tags=["Libros"])
 def get_libro(libro_id: int, db: DbSession) -> BookRead:
     """Obtener un libro por su ID.
 
@@ -94,7 +96,7 @@ def get_libro(libro_id: int, db: DbSession) -> BookRead:
     return libro
 
 
-@api_router.put("/{libro_id}", tags=["Libros"], response_model=BookRead)
+@api_router.put("/{libro_id}", tags=["Libros"])
 def update_libro(libro_id: int, libro_data: BookCreate, db: DbSession) -> BookRead:
     """Actualizar un libro existente.
 
