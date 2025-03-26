@@ -33,11 +33,11 @@ class Car(SQLModel, table=True):
             "examples": [
                 {
                     "quantity": 1,  # Ejemplo de registro de un carro
-                    "id": 4,
-                    "marca": "Toyota",
-                    "modelo": "Corolla",
-                    "año": 2020,
-                    "color": "Rojo",
+                    "id": 1,
+                    "marca": "Honda",
+                    "modelo": "Crv",
+                    "año": 8,
+                    "color": "Gris",
                     "created_at": "2025-03-13T07:48:04.965275",
                 },
                 {

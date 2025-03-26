@@ -37,6 +37,7 @@ import importlib
 import pkgutil
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.db import initialize_database
@@ -115,4 +116,12 @@ app = FastAPI(
             "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
         },
     ],
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:5500", "http://localhost:5500"],  # Evita usar "*" # front end de CONTACTOS corre en el puerto 3000
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos HTTP (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Permite todos los encabezados.
 )
