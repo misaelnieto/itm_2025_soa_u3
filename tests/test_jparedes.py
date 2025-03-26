@@ -7,11 +7,7 @@ This module contains tests for the Libreria API endpoints. It verifies the follo
 
 """
 
-from datetime import datetime  # Add this import
-
 from fastapi import status
-
-from app.proyectos.jparedes.schemas import BookBase
 
 BASE_PATH = "/api/v1/jparedes/libros"
 

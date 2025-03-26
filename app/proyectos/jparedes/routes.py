@@ -106,7 +106,8 @@ def update_libro(libro_id: int, libro_data: Book, db: DbSession) -> Book:
     libro = db.get(Book, libro_id)
     if not libro:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Libro no encontrado"
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Libro no encontrado",
         )
     for key, value in libro_data.dict(exclude_unset=True).items():
         setattr(libro, key, value)
@@ -117,7 +118,9 @@ def update_libro(libro_id: int, libro_data: Book, db: DbSession) -> Book:
 
 
 @api_router.delete(
-    "/{libro_id}", tags=["Libros"], status_code=status.HTTP_204_NO_CONTENT
+    "/{libro_id}",
+    tags=["Libros"],
+    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_libro(libro_id: int, db: DbSession):
     """Eliminar un libro por su ID.
@@ -130,7 +133,8 @@ def delete_libro(libro_id: int, db: DbSession):
     libro = db.get(Book, libro_id)
     if not libro:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Libro no encontrado"
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Libro no encontrado",
         )
     db.delete(libro)
     db.commit()

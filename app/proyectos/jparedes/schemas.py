@@ -29,4 +29,6 @@ class BookRead(BookBase):
     """Timestamp when the transaction was created."""
 
     class Config:
+        """Configuration for ORM mode."""
+
         orm_mode = True
