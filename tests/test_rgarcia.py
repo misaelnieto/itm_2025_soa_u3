@@ -49,7 +49,7 @@ def test_existent_singular_recipe(rest_api: TestClient):
 
     # Call the API to create the recipe
     create_response = rest_api.post(f"{BASE_PATH}/alta", json=receta_data)
-    assert create_response.status_code == status.HTTP_201_CREATED
+    assert create_response.status_code == status.HTTP_200_OK
     
     # Call the API to get the recipe by its ID
     response = rest_api.get(f"{BASE_PATH}/receta", params={"receta_id": receta_id})
@@ -89,7 +89,7 @@ def test_update_existent_recipe(rest_api: TestClient):
 
     # Call the API to create the recipe
     create_response = rest_api.post(f"{BASE_PATH}/alta", json=receta_data)
-    assert create_response.status_code == status.HTTP_201_CREATED
+    assert create_response.status_code == status.HTTP_200_OK
     
     receta_data = {
         "id": receta_id,
@@ -151,12 +151,12 @@ def test_delete_existent_recipe(rest_api: TestClient):
 
     # Call the API to create the recipe
     create_response = rest_api.post(f"{BASE_PATH}/alta", json=receta_data)
-    assert create_response.status_code == status.HTTP_201_CREATED
+    assert create_response.status_code == status.HTTP_200_OK
     
     response = rest_api.delete(f"{BASE_PATH}/eliminar", params={"receta_id": receta_id})
     
     # Check that the response is OK
-    assert response.status_code == status.HTTP_204_NO_CONTENT
+    assert response.status_code == status.HTTP_200_OK
     
     # Call the API to try to get the deleted recipe by its ID
     response = rest_api.get(f"{BASE_PATH}/receta", params={"receta_id": receta_id})

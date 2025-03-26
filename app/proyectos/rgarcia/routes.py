@@ -124,7 +124,7 @@ async def update_receta(
     return RecipeResponse(result=RecipeResult.successful)
 
 
-@api_router.delete("/eliminar", tags=["Recetas"], status_code=status.HTTP_204_NO_CONTENT)
+@api_router.delete("/eliminar", tags=["Recetas"], status_code=status.HTTP_200_OK)
 async def delete_receta(
     receta_id: int,  
     db: DbSession,  
