@@ -30,7 +30,7 @@ def test_crear_contacto(rest_api):
     payload = {
             "nombre": "Juan Perez",
             "telefono": "1234567890",
-            "correo": "juan@example.com"
+            "correo": "juan@example.com",
         }    
     response = rest_api.post(f"{BASE_PATH}/create", json=payload)
     assert response.status_code == status.HTTP_201_CREATED
@@ -47,7 +47,7 @@ def test_editar_contacto(rest_api):
     payload = {
             "nombre": "Miguel Perez",
             "telefono": "1234567890",
-            "correo": "miguel@example.com"
+            "correo": "miguel@example.com",
         }    
     response = rest_api.post(f"{BASE_PATH}/create", json=payload)
     assert response.status_code == status.HTTP_201_CREATED
@@ -57,7 +57,7 @@ def test_editar_contacto(rest_api):
     updated = {
             "nombre": "Miguel Hidalgo",
             "telefono": "1234567890",
-            "correo": "juan@example.com"
+            "correo": "juan@example.com",
         }   
     response = rest_api.put(f"{BASE_PATH}/edit/{contacto_id}", json=updated)
     assert response.status_code == status.HTTP_200_OK
@@ -73,7 +73,7 @@ def test_editar_contacto_notfound(rest_api):
     updated = {
         "nombre": "Nombre Actualizado",
         "telefono": "9876543210",
-        "correo": "actualizado@example.com"
+        "correo": "actualizado@example.com",
     }
     response = rest_api.put(f"{BASE_PATH}/edit/{contacto_id}", json=updated)
 
@@ -89,7 +89,7 @@ def test_eliminar_contacto(rest_api):
     payload = {
             "nombre": "Miguel Perez",
             "telefono": "1234567890",
-            "correo": "miguel@example.com"
+            "correo": "miguel@example.com",
         }    
     response = rest_api.post(f"{BASE_PATH}/create", json=payload)
     assert response.status_code == status.HTTP_201_CREATED    
@@ -122,7 +122,7 @@ def test_buscar_contacto(rest_api):
     payload = {
             "nombre": "Miguel Perez",
             "telefono": "1234567890",
-            "correo": "miguel@example.com"
+            "correo": "miguel@example.com",
         }    
     response = rest_api.post(f"{BASE_PATH}/create", json=payload)
     assert response.status_code == status.HTTP_201_CREATED
