@@ -6,13 +6,11 @@ $(document).ready(function(){
     '<a class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>';
 
     var actionsAdd = 
-        '<a class="add" title="Guardar" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>' +
-        '<a class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>';
+        '<a class="add" title="Guardar" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>';
 
     var actionsEdit = 
-        '<a class="save" title="Guardar Cambios" data-toggle="tooltip"><i class="material-icons">&#xE161;</i></a>' +
-        '<a class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>';
-    
+        '<a class="save" title="Guardar Cambios" data-toggle="tooltip"><i class="material-icons">&#xE161;</i></a>';
+            
         function mostrarMensaje(mensaje, tipo) {
         let messageDiv = $("#message");
         messageDiv.removeClass("alert-success alert-danger").addClass(tipo);
@@ -24,29 +22,33 @@ $(document).ready(function(){
             }, 3000);
         }
 
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-            
-            // Append table with add row form on add new button click
-            $(".btn_new").click(function(){
-                var index = $("table tbody tr:last-child").index();
-                var row = '<tr>' +
-                    '<td><input type="text" class="form-control disabled" name="id" id="id"></td>' +
-                    '<td><input type="text" class="form-control" name="nombre" id="nombre"></td>' +
-                    '<td><input type="text" class="form-control" name="telefono" id="telefono"></td>' +
-                    '<td><input type="text" class="form-control" name="correo" id="correo"></td>' +
-                    '<td>' + actions + '</td>' +
-                '</tr>';
-                $("table").append(row);		
-                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
         
+        
+        $('[data-toggle="tooltip"]').tooltip();
+        
+        $(document).on("click", ".btn_new", function () {
+            // Eliminar cualquier fila temporal existente
+            $("table tbody tr.temporary").remove();
+        
+            // Agregar una nueva fila temporal con inputs
+            var row = `
+                <tr class="temporary">
+                    <td><input type="text" class="form-control disabled" name="id" id="id" disabled></td>
+                    <td><input type="text" class="form-control" name="nombre" id="nombre"></td>
+                    <td><input type="text" class="form-control" name="telefono" id="telefono"></td>
+                    <td><input type="text" class="form-control" name="correo" id="correo"></td>
+                    <td>${actionsAdd}</td>
+                </tr>`;
+            $("table tbody").append(row);
+        
+            $('[data-toggle="tooltip"]').tooltip(); // Reactivar tooltips si los usas
         });
-        
-    }
+}
 
     function cargarDatos() {
+        // Eliminar cualquier fila temporal existente
+        $("table tbody tr.temporary").remove();
+
         $.ajax({
             url: `${apiURL}/agenda`, // Endpoint de la API
             type: "GET",
@@ -54,16 +56,15 @@ $(document).ready(function(){
             success: function(response) {
                 console.log("✅ Respuesta de la API:", response);
                 $("table tbody").empty();
-
-                if (!Array.isArray(response)) {
-                    console.error("⚠️ La API no devolvió un array:", response);
-                    mostrarMensaje("⚠️ Error: Respuesta inesperada del servidor", "alert-danger");
-                    return;
+    
+                if (!Array.isArray(response) || response.length === 0) {
+                    console.warn("⚠️ No hay datos en la base de datos.");
+                    mostrarMensaje("⚠️ No hay contactos en la base de datos. Agrega uno nuevo.", "alert-warning");
                 }
-
-                var data = response.data || response;
-
-                $.each(data, function(index, item) {
+    
+                // Si hay datos, iterar sobre ellos y agregarlos a la tabla
+                else {
+                    $.each(response, function(index, item) {
                     var row = `<tr>
                         <td>${item.id}</td>
                         <td>${item.nombre}</td>
@@ -73,11 +74,12 @@ $(document).ready(function(){
                     </tr>`;
                     $("table tbody").append(row);
                 });
+                
+                    mostrarMensaje("✅ Datos cargados correctamente", "alert-success");
 
-                $(".buscador_addNew").removeClass("disabled"); /*habilitar el buscador y el boton de agregar nuevo*/
-
-                $('[data-toggle="tooltip"]').tooltip(); // Reactivar tooltips si los usas
-                mostrarMensaje("✅ Datos cargados correctamente", "alert-success");
+                    $(".buscador_addNew").removeClass("disabled"); // Habilitar el buscador y el botón de agregar nuevo
+                    $('[data-toggle="tooltip"]').tooltip(); // Reactivar tooltips si los usas
+                }
             },
             error: function(xhr, status, error) {
                 console.error("Error al obtener los datos:", xhr.status, xhr.statusText, xhr.responseText);
@@ -135,6 +137,7 @@ $(document).ready(function(){
     window.cargarDatos = cargarDatos;
 
     $(document).on("click", ".add", function () {
+
         $(this).tooltip('dispose'); // Elimina el tooltip del botón específico para que no se quede flotando al borrar la fila
         const row = $(this).closest("tr"); // Obtén la fila actual
         const nombre = row.find("td").eq(1).find("input").val()?.trim(); // Obtén el valor del input de nombre
@@ -170,6 +173,9 @@ $(document).ready(function(){
             },
 
         })
+
+        // Eliminar la clase "temporary" para que la fila sea permanente
+        row.removeClass("temporary");
     });
 
     $(document).on("click", ".edit", function () {

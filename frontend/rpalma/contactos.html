@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="scripts.js" defer ></script>
+<script src="scripts.js?v=1.0.7" defer ></script>
 
 
 </head>
@@ -25,6 +25,9 @@
                     <h2>Contactos <b>Agenda</b></h2>
                 </div>
                
+            </div>
+            <div>
+                <button class="load" onclick="cargarDatos()">Cargar Datos</button>
             </div>
             <div class="buscador_addNew disabled">
                 <div class="filtro">
@@ -41,7 +44,6 @@
                     <button type="button" class="btn_new"><i class="fa fa-plus"></i> Add New</button>
                 </div>
             </div>
-            <button onclick="cargarDatos()">Cargar Datos</button>
             <table class="table table-bordered">
                 <thead>
                     <tr>
