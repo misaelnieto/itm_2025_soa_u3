@@ -155,6 +155,7 @@ class MyTableWidget(QWidget):
             self.id_input.setText('')
         # Sets focus on Nombre field
         self.nombre_input.setFocus()
+        self.enable_buttons()
 
     def delete_recipe(self):
         """Delete the selected recipe."""
@@ -176,6 +177,15 @@ class MyTableWidget(QWidget):
         self.min_preparacion_input.setValue(1)  # Reset to minimum value
         self.ingredientes_input.clear()
         self.metodo_preparacion_input.clear()
+        self.disable_buttons()
+        
+    def disable_buttons(self):
+        self.saveButton.setEnabled(False)
+        self.deleteButton.setEnabled(False)
+    
+    def enable_buttons(self):
+        self.saveButton.setEnabled(True)
+        self.deleteButton.setEnabled(True)
 
     def showDialog(self, message: str, title: str, icon=QMessageBox.Icon.Information):
         """Dialog box that blocks until closed."""
