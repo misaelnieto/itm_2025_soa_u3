@@ -37,6 +37,7 @@ api_router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
+
 @api_router.get("/agenda", tags=["Contactos"])
 def agenda_list(
     db: DbSession,
@@ -192,3 +193,4 @@ async def buscar_contacto(
         message="Found contactos matching the search criteria",
         agenda=contactos,
     )
+    

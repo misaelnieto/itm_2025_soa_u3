@@ -17,7 +17,7 @@ class ContactoDB(BaseModel):
     Attributes:
         nombre (str): The name of the individual or entity associated with the Contacto.
         telefono (str): The phone number of the individual or entity. This field is validated to ensure it is in a valid phone number format.
-        correo (EmailStr | None): The email address of the individual or entity. This field is optional and can be None.
+        correo (EmailStr | None): The email address of the individual or entity. The field type EmailStr validates that the data has proper email format. This field is optional and can be None.
 
     Methods:
         validate_telefono(cls, value):

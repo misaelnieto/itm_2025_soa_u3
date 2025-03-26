@@ -26,8 +26,8 @@ body {
 
 
 table.table {
-    table-layout: fixed;
     width: 100%;
+    table-layout: fixed;
     background-color: #f9f9f9;
     border-radius: 10px;
     color:white;
@@ -39,20 +39,21 @@ table.table th:nth-child(1), table.table td:nth-child(1) {
     text-align: center;
 }
 
-table.table th:nth-child(2) {
-    width: 30%; /* La segunda columna ocupa el 40% del ancho total */
+table.table th:nth-child(2), table.table td:nth-child(2) {
+    width: auto; /* La segunda columna ocupa el 40% del ancho total */
 }
 
-table.table th:nth-child(3) {
+table.table th:nth-child(3), table.table td:nth-child(3) {
     width: auto; /* La tercera columna ocupa el 30% del ancho total */
 }
 
-table.table th:nth-child(4) {
-    width: auto; /* La cuarta columna ocupa el 20% del ancho total */
+table.table th:nth-child(4), table.table td:nth-child(4) {
+    width: 20%; /* La cuarta columna ocupa el 20% del ancho total */
 }
 
-table.table th:nth-child(5) {
-    width: 10%; /* La cuarta columna ocupa el 20% del ancho total */
+table.table th:nth-child(5), table.table td:nth-child(5) {
+    width: 15%; /* La quinta columna ocupa el 20% del ancho total */
+    text-align: center;
 }
 
 table.table th{
@@ -60,7 +61,7 @@ table.table th{
     background-color: #011f30;
     color: #ffffff;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -76,14 +77,7 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
 
 }
-table.table th i {
-    font-size: 13px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-table.table th:last-child {
-    width: 100px;
-}
+
 table.table td a {
     cursor: pointer;
     display: inline-block;
@@ -98,6 +92,9 @@ table.table td a.edit {
 }
 table.table td a.delete {
     color: #f34021;
+}
+table.table td a.save {
+    color: #46bed6;
 }
 table.table td i {
     font-size: 19px;
@@ -142,6 +139,11 @@ table.table td .add {
     align-items: center; /* Alinea verticalmente al centro */
 }
 
+.disabled {
+    pointer-events: none; /* Deshabilita la interacción */
+    opacity: 0.5; /* Reduce la opacidad para indicar que está deshabilitado */
+}
+
 .filtro{
     margin-left: 15px;
 
@@ -167,4 +169,33 @@ table.table td .add {
 
 .filtro .btn:hover{
     background-color: #2f1a73;
+}
+
+#message {
+    display: none;
+    position: fixed; /* Fija el mensaje en la pantalla */
+    bottom: 0; /* Posiciónalo en la parte inferior */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centrar completamente */
+    padding: 10px;
+    margin: 0; /* Elimina márgenes */
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    width: auto; /* Ajusta el ancho automáticamente */
+    max-width: 90%; /* Evita que sea demasiado ancho */
+    opacity: 70%;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
