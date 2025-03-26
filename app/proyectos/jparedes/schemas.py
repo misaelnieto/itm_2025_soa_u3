@@ -5,7 +5,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class TransactionBase(BaseModel):
+class BookBase(BaseModel):
     """Base schema for a transaction."""
 
     isbn: int
@@ -16,13 +16,11 @@ class TransactionBase(BaseModel):
     """Author of the book."""
 
 
-class TransactionCreate(TransactionBase):
+class BookCreate(BookBase):
     """Schema for creating a transaction."""
 
-    pass
 
-
-class TransactionRead(TransactionBase):
+class BookRead(BookBase):
     """Schema for reading a transaction."""
 
     id: int

@@ -20,15 +20,15 @@ Dependencies:
     - [sqlalchemy](https://www.sqlalchemy.org/): SQL toolkit and Object-Relational Mapping (ORM) library.
     - [sqlmodel](https://sqlmodel.tiangolo.com/): SQL databases in Python, designed to be compatible with FastAPI.
     - `app.main`: Main application module containing the database session.
-    - `.models`: Module containing the Transaction model.
+    - `.models`: Module containing the Book model.
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 from sqlmodel import select
 
 from app.db import DbSession
 
-from .models import Transaction
+from .models import Book
 
 api_router = APIRouter(
     prefix="/libros",
@@ -38,15 +38,15 @@ api_router = APIRouter(
 
 
 @api_router.post("/", tags=["Libros"], status_code=status.HTTP_201_CREATED)
-def create_libro(libro: Transaction, db: DbSession) -> Transaction:
+def create_libro(libro: Book, db: DbSession) -> Book:
     """Crear un nuevo libro en la base de datos.
 
     Args:
-        libro (Transaction): Datos del libro a crear.
+        libro (Book): Datos del libro a crear.
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Transaction: El libro creado.
+        Book: El libro creado.
 
     """
     db.add(libro)
@@ -56,21 +56,21 @@ def create_libro(libro: Transaction, db: DbSession) -> Transaction:
 
 
 @api_router.get("/", tags=["Libros"])
-def get_libros(db: DbSession) -> list[Transaction]:
+def get_libros(db: DbSession) -> list[Book]:
     """Obtener la lista de todos los libros.
 
     Args:
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        list[Transaction]: Lista de libros en la base de datos.
+        list[Book]: Lista de libros en la base de datos.
 
     """
-    return db.exec(select(Transaction)).all()
+    return db.exec(select(Book)).all()
 
 
 @api_router.get("/{libro_id}", tags=["Libros"])
-def get_libro(libro_id: int, db: DbSession) -> Transaction:
+def get_libro(libro_id: int, db: DbSession) -> Book:
     """Obtener un libro por su ID.
 
     Args:
@@ -78,10 +78,10 @@ def get_libro(libro_id: int, db: DbSession) -> Transaction:
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Transaction: El libro correspondiente al ID.
+        Book: El libro correspondiente al ID.
 
     """
-    libro = db.get(Transaction, libro_id)
+    libro = db.get(Book, libro_id)
     if not libro:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -91,19 +91,19 @@ def get_libro(libro_id: int, db: DbSession) -> Transaction:
 
 
 @api_router.put("/{libro_id}", tags=["Libros"])
-def update_libro(libro_id: int, libro_data: Transaction, db: DbSession) -> Transaction:
+def update_libro(libro_id: int, libro_data: Book, db: DbSession) -> Book:
     """Actualizar un libro existente.
 
     Args:
         libro_id (int): ID del libro a actualizar.
-        libro_data (Transaction): Datos actualizados del libro.
+        libro_data (Book): Datos actualizados del libro.
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Transaction: El libro actualizado.
+        Book: El libro actualizado.
 
     """
-    libro = db.get(Transaction, libro_id)
+    libro = db.get(Book, libro_id)
     if not libro:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Libro no encontrado"
@@ -127,7 +127,7 @@ def delete_libro(libro_id: int, db: DbSession):
         db (DbSession): Sesión de base de datos.
 
     """
-    libro = db.get(Transaction, libro_id)
+    libro = db.get(Book, libro_id)
     if not libro:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Libro no encontrado"

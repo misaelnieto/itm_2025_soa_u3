@@ -15,7 +15,7 @@ def now_utc():
     return datetime.now(UTC)
 
 
-class Transaction(SQLModel, table=True):
+class Book(SQLModel, table=True):
     """Modelo para registrar movimientos en la base de datos."""
 
     __tablename__ = "libreria_transaction"

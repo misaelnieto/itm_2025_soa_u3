@@ -1,17 +1,17 @@
-"""# 🧪 Test Suite for Alcancia API.
+"""# 🧪 Test Suite for Libreria API.
 
-This module contains tests for the Alcancia API endpoints. It verifies the following:
-- ✅ The behavior of the API when the database is empty.
-- 💰 Deposit transactions.
-- 💸 Withdrawal transactions.
-- 🔍 Validation of input data for transactions.
+This module contains tests for the Libreria API endpoints. It verifies the following:
+- ✅ The behavior of the API when the library database is empty.
+- 📚 CRUD operations for books.
+- 🔍 Validation of input data for books.
+
 """
 
 from datetime import datetime  # Add this import
 
 from fastapi import status
 
-from app.proyectos.jparedes.schemas import TransactionBase
+from app.proyectos.jparedes.schemas import BookBase
 
 BASE_PATH = "/api/v1/jparedes/libros"
 
@@ -24,7 +24,7 @@ def test_empty_database(rest_api):
 
 
 def test_crud_books(rest_api):
-    """📚 Tests the API to create a new book."""
+    """📚 Tests the API to create, update, delete and get list of books."""
     response = rest_api.post(
         f"{BASE_PATH}",
         json={
