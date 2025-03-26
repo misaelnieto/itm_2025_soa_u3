@@ -23,12 +23,13 @@ Dependencies:
     - `.models`: Module containing the Book model.
 """
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import select
 
 from app.db import DbSession
 
 from .models import Book
+from .schemas import BookCreate, BookRead
 
 api_router = APIRouter(
     prefix="/libros",
@@ -37,40 +38,43 @@ api_router = APIRouter(
 )
 
 
-@api_router.post("/", tags=["Libros"], status_code=status.HTTP_201_CREATED)
-def create_libro(libro: Book, db: DbSession) -> Book:
+@api_router.post(
+    "/", tags=["Libros"], status_code=status.HTTP_201_CREATED, response_model=BookRead
+)
+def create_libro(libro: BookCreate, db: DbSession) -> BookRead:
     """Crear un nuevo libro en la base de datos.
 
     Args:
-        libro (Book): Datos del libro a crear.
+        libro (BookCreate): Datos del libro a crear.
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Book: El libro creado.
+        BookRead: El libro creado.
 
     """
-    db.add(libro)
+    new_libro = Book(**libro.dict())
+    db.add(new_libro)
     db.commit()
-    db.refresh(libro)
-    return libro
+    db.refresh(new_libro)
+    return new_libro
 
 
-@api_router.get("/", tags=["Libros"])
-def get_libros(db: DbSession) -> list[Book]:
+@api_router.get("/", tags=["Libros"], response_model=list[BookRead])
+def get_libros(db: DbSession) -> list[BookRead]:
     """Obtener la lista de todos los libros.
 
     Args:
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        list[Book]: Lista de libros en la base de datos.
+        list[BookRead]: Lista de libros en la base de datos.
 
     """
     return db.exec(select(Book)).all()
 
 
-@api_router.get("/{libro_id}", tags=["Libros"])
-def get_libro(libro_id: int, db: DbSession) -> Book:
+@api_router.get("/{libro_id}", tags=["Libros"], response_model=BookRead)
+def get_libro(libro_id: int, db: DbSession) -> BookRead:
     """Obtener un libro por su ID.
 
     Args:
@@ -78,7 +82,7 @@ def get_libro(libro_id: int, db: DbSession) -> Book:
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Book: El libro correspondiente al ID.
+        BookRead: El libro correspondiente al ID.
 
     """
     libro = db.get(Book, libro_id)
@@ -90,17 +94,17 @@ def get_libro(libro_id: int, db: DbSession) -> Book:
     return libro
 
 
-@api_router.put("/{libro_id}", tags=["Libros"])
-def update_libro(libro_id: int, libro_data: Book, db: DbSession) -> Book:
+@api_router.put("/{libro_id}", tags=["Libros"], response_model=BookRead)
+def update_libro(libro_id: int, libro_data: BookCreate, db: DbSession) -> BookRead:
     """Actualizar un libro existente.
 
     Args:
         libro_id (int): ID del libro a actualizar.
-        libro_data (Book): Datos actualizados del libro.
+        libro_data (BookCreate): Datos actualizados del libro.
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        Book: El libro actualizado.
+        BookRead: El libro actualizado.
 
     """
     libro = db.get(Book, libro_id)
