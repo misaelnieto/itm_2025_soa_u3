@@ -7,6 +7,7 @@ from app.proyectos.rpalma.models import Agenda
 class ContactoResponse(BaseModel):
     """Represents the result of an operation on Contacto data."""
     
+    code: int
     status: str
     message: str
     agenda: list[Agenda] | None = None  # Agenda is now optional

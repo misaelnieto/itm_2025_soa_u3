@@ -79,6 +79,7 @@ async def crear_contacto(
 
     # Return the response object directly
     return ContactoResponse(
+        code=201,
         status="successful",
         message="Contacto created successfully",
         agenda=agenda_actualizada,
@@ -103,6 +104,7 @@ async def editar_contacto(
 
     if not contacto_existente:
         return ContactoResponse(
+            code=404,
             status="failed",
             message="Contacto not found",
             agenda=None,
@@ -125,6 +127,7 @@ async def editar_contacto(
 
     # Return the response object directly
     return ContactoResponse(
+        code=200,
         status="successful",
         message="Contacto updated successfully",
         agenda=agenda_actualizada,
@@ -147,6 +150,7 @@ async def eliminar_contacto(
 
     if not contacto_existente:
          return ContactoResponse(
+        code=404,     
         status="failed",
         message="Contacto not found",
         agenda=None,
@@ -161,6 +165,7 @@ async def eliminar_contacto(
     
     # Return the response object directly
     return ContactoResponse(
+        code=200,
         status="successful",
         message="Contacto deleted successfully",
         agenda=agenda_actualizada,
@@ -183,12 +188,14 @@ async def buscar_contacto(
 
     if not contactos:
         return ContactoResponse(
+        code=404,
         status="failed",
         message="Contacto not found",
         agenda=None,
     )
 
     return ContactoResponse(
+        code=200,
         status="successful",
         message="Found contactos matching the search criteria",
         agenda=contactos,
