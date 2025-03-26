@@ -23,7 +23,7 @@ Dependencies:
     - `.models`: Module containing the Book model.
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 from sqlmodel import select
 
 from app.db import DbSession
