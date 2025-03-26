@@ -1,11 +1,19 @@
-"""API routes for managing the recipes in "receta" application.
+"""API routes for managing the recipes in the "receta" application.
 
 Routes:
-    - `GET /recetas/recetas`: Retrieve the list of all recipes.
+    - `GET /recetas/todas`: Retrieve the list of all recipes.
+    - `GET /recetas/receta`: Retrieve a specific recipe by its ID.
+    - `POST /recetas/alta`: Upload a new recipe.
+    - `PUT /recetas/modificar`: Update an existing recipe.
+    - `DELETE /recetas/eliminar`: Delete a recipe by its ID.
 
 Functions:
     - `recipes_list`: Retrieve the list of all recipes.
-    - `create_transaction`: Create a new transaction (Deposit/Withdraw)
+    - `get_receta`: Retrieve a specific recipe by its ID.
+    - `upload_receta`: Upload a new recipe.
+    - `update_receta`: Update an existing recipe.
+    - `delete_receta`: Delete a recipe by its ID.
+
 
 Dependencies:
     - [fastapi](https://fastapi.tiangolo.com/): FastAPI framework for building APIs.
@@ -17,7 +25,10 @@ Dependencies:
     - `.schemas`: Module containing the response schemas (`TransactionResponse`, `TransactionResult`, Transaction`Type).
 """
 
+import json
+
 from fastapi import APIRouter, HTTPException, status
+from fastapi.responses import JSONResponse
 from sqlmodel import select
 
 from app.db import DbSession
@@ -79,8 +90,11 @@ async def upload_receta(
 
     db.add(receta_db)
     db.commit()
+    db.refresh(receta_db)  # Refresh to get the auto-generated id
 
-    return RecipeResponse(result=RecipeResult.successful)
+    receta_json = json.loads(receta_db.model_dump_json())
+
+    return JSONResponse(content=receta_json)
 
 
 @api_router.put("/modificar", tags=["Recetas"], status_code=status.HTTP_204_NO_CONTENT)

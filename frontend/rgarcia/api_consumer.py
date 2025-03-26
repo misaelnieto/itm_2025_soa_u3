@@ -8,7 +8,6 @@ def get_recipes():
     """"Get all the recipes from the API."""
     request = requests.get("http://127.0.0.1:8000/api/v1/rgarcia/recetas/todas", timeout=10)
     if request.status_code == 200:
-        print(request.content)
         return json.loads(request.content)
     return ''
 
@@ -22,7 +21,12 @@ def get_recipe(recipe_id : int):
 def post_recipe(data: dict):
     """Create a new recipe."""
     request = requests.post("http://127.0.0.1:8000/api/v1/rgarcia/recetas/alta", json=data, timeout=10)
-    return request.json() if request.status_code == 200 else ''
+    
+    if request.status_code == 200:
+        response_data = request.json()
+        print(request.status_code)
+        return response_data.get("id", None)  # Returns the id, or None if not found
+    return None
 
 def put_recipe(data: dict):
     """Update an existing recipe by its ID."""
