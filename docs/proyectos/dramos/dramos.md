@@ -52,7 +52,7 @@ Aqui ya nos aparece el producto eliminado
 
 ## Pruebas del backend
 
-Nuestro test se encuentra en la carpeta /test/test_dramos.py
+Nuestro tests se encuentran en la carpeta /tests/test_dramos.py
 
 Para probar nuestro backend corremos el comando: 
 uv run pytest tests/test_dramos.py

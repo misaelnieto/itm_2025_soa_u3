@@ -88,7 +88,6 @@ def get_producto(producto_id: int, db: DbSession) -> Producto: # type: ignore
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Producto no encontrado.",
         )
-    return producto
 
 
 @api_router.put("/{producto_id}", tags=["Productos"])

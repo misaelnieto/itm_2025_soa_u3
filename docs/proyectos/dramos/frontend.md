@@ -1,6 +1,6 @@
 # Como se creo el frontend
 
-Se uso el framework de nextJS y se crea con el siguiente comando
+Se uso el framework de Next.js y se crea con el siguiente comando
 
 npm npx create-next-app@latest dramos
 

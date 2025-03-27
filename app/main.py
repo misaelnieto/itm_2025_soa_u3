@@ -38,10 +38,10 @@ import pkgutil
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.config import settings
 from app.db import initialize_database
 from app.log_utils import logger
-from fastapi.middleware.cors import CORSMiddleware
 
 
 def load_routes(app: FastAPI):
@@ -129,7 +129,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000", "http://localhost:3000"],  # Evita usar "*" # front end de CONTACTOS corre en el puerto 3000
+    allow_origins=origins,  # Using the defined 'origins' variable for consistency and maintainability
     allow_credentials=True,
     allow_methods=["*"],  # Permite todos los métodos HTTP (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],  # Permite todos los encabezados.

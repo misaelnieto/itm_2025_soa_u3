@@ -29,7 +29,7 @@ export default function CreateBook() {
   // Manejo del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault(); // Evita que el formulario recargue la página
-    if (!validateFields()) return; // Si la validación falla, no se envía la solicitud
+    if (!validateFields()) { // Si la validación falla, no se envía la solicitud
     
     try {
       // Enviamos la solicitud a la API para crear un nuevo libro
@@ -49,7 +49,8 @@ export default function CreateBook() {
     } catch (error) {
       console.error("Error:", error); // Manejo de errores en caso de fallo en la solicitud
     }
-  };
+  }
+};
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
