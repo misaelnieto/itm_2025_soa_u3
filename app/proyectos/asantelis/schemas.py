@@ -1,23 +1,12 @@
-"""Esquemas de Pydantic para validación de datos de la API de animales.
-
-Este módulo contiene los modelos de Pydantic utilizados para validar los datos
-de entrada y salida en las operaciones CRUD de la API de animales.
-
-"""
+"""Esquemas de Pydantic para validación de datos de la API de animales."""
 
 from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator
 
 
-class AnimalCreate(BaseModel):
-    """Esquema para la creación de un nuevo registro de animal.
-
-    Este modelo valida los datos necesarios para crear un nuevo animal
-    en la base de datos, asegurando que todos los campos requeridos
-    estén presentes y sean válidos.
-
-    """
+class AnimalBase(BaseModel):
+    """Esquema base para un animal."""
 
     nombre: str
     """Nombre del animal (campo obligatorio)"""
@@ -29,21 +18,14 @@ class AnimalCreate(BaseModel):
     @field_validator("nombre", "raza", mode="before")
     @classmethod
     def validate_not_empty(cls, v):
-        """Valida que los campos de texto no estén vacíos.
-
-        Args:
-            v: Valor del campo a validar
-
-        Returns:
-            El valor validado si es válido
-
-        Raises:
-            ValueError: Si el campo está vacío o solo contiene espacios
-
-        """
+        """Valida que los campos de texto no estén vacíos."""
         if not v or v.strip() == "":
             raise ValueError("field required")
         return v
+
+
+class AnimalCreate(AnimalBase):
+    """Esquema para la creación de un nuevo registro de animal."""
 
     class Config:
         """Configuración adicional para el modelo AnimalCreate."""
@@ -65,13 +47,7 @@ class AnimalCreate(BaseModel):
 
 
 class AnimalUpdate(BaseModel):
-    """Esquema para actualizar un animal existente.
-
-    Este modelo permite actualizar parcialmente los datos de un animal,
-    haciendo que todos los campos sean opcionales pero validando que
-    si se proporcionan, sean válidos.
-
-    """
+    """Esquema para actualizar un animal existente."""
 
     nombre: str | None = None
     """Nombre del animal (campo opcional)"""
@@ -83,18 +59,7 @@ class AnimalUpdate(BaseModel):
     @field_validator("nombre", "raza")
     @classmethod
     def validate_not_empty(cls, v):
-        """Valida que los campos de texto no estén vacíos si se proporcionan.
-
-        Args:
-            v: Valor del campo a validar
-
-        Returns:
-            El valor validado si es válido o None
-
-        Raises:
-            ValueError: Si el campo proporcionado está vacío o solo contiene espacios
-
-        """
+        """Valida que los campos de texto no estén vacíos si se proporcionan."""
         if v is not None and (not v or v.strip() == ""):
             raise ValueError("field required")
         return v
@@ -116,22 +81,11 @@ class AnimalUpdate(BaseModel):
         }
 
 
-class AnimalResponse(BaseModel):
-    """Esquema para la respuesta de operaciones con animales.
-
-    Este modelo define la estructura de los datos que se devuelven
-    al cliente cuando se consulta información de un animal.
-
-    """
+class AnimalResponse(AnimalBase):
+    """Esquema para la respuesta de operaciones con animales."""
 
     id: int
     """Identificador único del animal en la base de datos"""
-    nombre: str
-    """Nombre del animal"""
-    raza: str
-    """Raza o especie del animal"""
-    edad: int
-    """Edad del animal en años"""
     created_at: datetime
     """Fecha y hora de registro del animal en formato ISO 8601"""
 
