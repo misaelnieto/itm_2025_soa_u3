@@ -24,15 +24,13 @@ Dependencies:
     - `.schemas`: Module containing the response schemas (`AnimalResponse`, `AnimalUpdate`).
 """
 
-from typing import Annotated
-
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 from sqlmodel import select
 
 from app.db import DbSession
 
 from .models import Register
-from .schemas import AnimalResponse, AnimalUpdate, AnimalCreate
+from .schemas import AnimalCreate, AnimalResponse, AnimalUpdate
 
 api_router = APIRouter(
     prefix="/animales",
@@ -48,7 +46,7 @@ def animals_list(
     """Retrieve the list of all registered animals.
 
     This endpoint returns all animals registered in the application.
-    
+
     - **Returns**: `list[Register]`: A list of all registered animals.
     """
     return db.exec(select(Register)).all()
@@ -123,7 +121,7 @@ async def update_animal(
     animal = db.get(Register, animal_id)
     if not animal:
         raise HTTPException(status_code=404, detail="Animal not found")
-    
+
     for key, value in animal_update.dict(exclude_unset=True).items():
         setattr(animal, key, value)
 
@@ -151,7 +149,7 @@ async def delete_animal(
     animal = db.get(Register, animal_id)
     if not animal:
         raise HTTPException(status_code=404, detail="Animal not found")
-    
+
     db.delete(animal)
     db.commit()
     return {"detail": "Animal deleted successfully"}

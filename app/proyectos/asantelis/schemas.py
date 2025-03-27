@@ -1,8 +1,8 @@
 """Esquemas de validación de datos."""
 
-from pydantic import BaseModel, Field, field_validator
-from typing import Optional
 from datetime import datetime
+
+from pydantic import BaseModel, Field, field_validator
 
 
 class AnimalCreate(BaseModel):
@@ -24,6 +24,8 @@ class AnimalCreate(BaseModel):
         return v
 
     class Config:
+        """Configuration for the AnimalCreate model."""
+
         json_schema_extra = {
             "examples": [
                 {
@@ -43,11 +45,11 @@ class AnimalCreate(BaseModel):
 class AnimalUpdate(BaseModel):
     """Schema for updating an existing animal."""
 
-    nombre: Optional[str] = None
+    nombre: str | None = None
     """The name of the animal"""
-    raza: Optional[str] = None
+    raza: str | None = None
     """The breed of the animal"""
-    edad: Optional[int] = Field(None, ge=0)
+    edad: int | None = Field(None, ge=0)
     """The age of the animal"""
 
     @field_validator("nombre", "raza")
@@ -59,6 +61,8 @@ class AnimalUpdate(BaseModel):
         return v
 
     class Config:
+        """Configuration for the AnimalUpdate model."""
+
         json_schema_extra = {
             "examples": [
                 {
@@ -88,6 +92,8 @@ class AnimalResponse(BaseModel):
     """The timestamp when the animal was registered"""
 
     class Config:
+        """Configuration for the AnimalResponse model."""
+
         orm_mode = True
         from_attributes = True
         json_schema_extra = {

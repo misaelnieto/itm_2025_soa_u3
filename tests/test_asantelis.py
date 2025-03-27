@@ -10,7 +10,7 @@ This module contains tests for the Animals API endpoints. It verifies the follow
 
 from fastapi import status
 
-from app.proyectos.asantelis.schemas import AnimalResponse, AnimalCreate, AnimalUpdate
+from app.proyectos.asantelis.schemas import AnimalResponse
 
 BASE_PATH = "/api/v1/asantelis/animales"
 
