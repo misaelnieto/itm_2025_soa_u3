@@ -59,7 +59,7 @@ def test_existent_singular_recipe(rest_api: TestClient):
     
     receta_data = response.json()
     # Expect a Dictionary
-    assert isinstance(receta_data, dict) is True
+    assert isinstance(receta_data, dict)
     # Parse the response into a Receta object
     receta = Receta.model_validate(receta_data)
     # Check that the parsed data is an instance of Receta
