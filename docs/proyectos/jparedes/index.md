@@ -12,7 +12,7 @@ El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los ar
 
 - Descarga de transacciones
 
-El frontend está constrido con la ayuda del Framework [NextJS](https://nextjs.org/) para la construir la interfaz grafica de usuario y se usa la interfaz nativa `fetch` de JavaScript para comunicarse con la base de datos. El frontend se conecta al backend mediante la url `http://127.0.0.1:8000/api/v1/jparedes/libros`.
+El frontend está construido con la ayuda del Framework [NextJS](https://nextjs.org/) para la construir la interfaz grafica de usuario y se usa la interfaz nativa `fetch` de JavaScript para comunicarse con la base de datos. El frontend se conecta al backend mediante la url `http://127.0.0.1:8000/api/v1/jparedes/libros`.
 
 ### Carga inicial de datos
 
@@ -153,7 +153,7 @@ uv run pytest
 
 ## Frontend
 
-El código fuente del frontend se encuentra en el archivo `/frontend/libros.py`. Este módulo interactúa con el backend para mostrar el estado de la alcancía y permitir operaciones como depósitos y retiros.
+El código fuente del frontend se encuentra en el archivo `/frontend/jparedes`. Este módulo interactúa con el backend para mostrar el estado de la libreria y permitir operaciones como alta y baja.
 
 [Documentación de Funciones del frontend](frontend.md){ .md-button .md-button--primary}
 
