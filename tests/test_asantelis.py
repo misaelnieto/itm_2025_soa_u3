@@ -24,12 +24,12 @@ def test_empty_database(rest_api):
 
 def test_create_animal(rest_api):
     """🐾 Test creating animal records."""
-    # First, the database is empty
+    # Empty database
     response = rest_api.get(f"{BASE_PATH}/")
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == []
 
-    # Now let's create a new animal
+    # Create a new animal
     new_animal = {"nombre": "Firulais", "raza": "Pastor Alemán", "edad": 5}
     response = rest_api.post(f"{BASE_PATH}/", json=new_animal)
     assert response.status_code == status.HTTP_201_CREATED
@@ -50,7 +50,7 @@ def test_create_animal(rest_api):
 
 def test_update_animal(rest_api):
     """✏️ Test updating animal records."""
-    # First, create a new animal
+    # Create a new animal
     new_animal = {"nombre": "Firulais", "raza": "Pastor Alemán", "edad": 5}
     response = rest_api.post(f"{BASE_PATH}/", json=new_animal)
     assert response.status_code == status.HTTP_201_CREATED
@@ -76,7 +76,7 @@ def test_update_animal(rest_api):
 
 def test_delete_animal(rest_api):
     """🗑️ Test deleting animal records."""
-    # First, create a new animal
+    # Create a new animal
     new_animal = {
         "nombre": "Firulais",
         "raza": "Pastor Alemán",
@@ -101,7 +101,7 @@ def test_delete_animal(rest_api):
 
 def test_animal_validation(rest_api):
     """🔍 Test validation of animal inputs."""
-    # We cannot create an animal with an empty name
+    # Cannot create an animal with an empty name
     invalid_animal = {
         "nombre": "",
         "raza": "Pastor Alemán",
@@ -114,10 +114,10 @@ def test_animal_validation(rest_api):
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
     r = response.json()
     assert r["detail"][0]["loc"] == ["body", "nombre"]
-    # Verificamos que el mensaje de error contenga "field required" en lugar de ser exactamente igual
+    # the error message contains 'field required'
     assert "field required" in r["detail"][0]["msg"]
 
-    # We cannot create an animal with a negative age
+    # Cannot create an animal with a negative age
     invalid_animal = {
         "nombre": "Firulais",
         "raza": "Pastor Alemán",
@@ -132,7 +132,7 @@ def test_animal_validation(rest_api):
     assert r["detail"][0]["loc"] == ["body", "edad"]
     assert "greater than or equal to 0" in r["detail"][0]["msg"]
 
-    # We cannot create an animal with a non-integer age
+    # Cannot create an animal with a non-integer age
     invalid_animal = {
         "nombre": "Firulais",
         "raza": "Pastor Alemán",
@@ -147,7 +147,7 @@ def test_animal_validation(rest_api):
     assert r["detail"][0]["loc"] == ["body", "edad"]
     assert "valid integer" in r["detail"][0]["msg"]
 
-    # We cannot create an animal with an empty breed
+    # Cannot create an animal with an empty breed
     invalid_animal = {
         "nombre": "Firulais",
         "raza": "",
