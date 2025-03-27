@@ -39,6 +39,8 @@ def test_crear_contacto(rest_api):
     assert data.message == "Contacto created successfully"
     assert len(data.agenda) == 1
     assert data.agenda[0].nombre == "Juan Perez"
+    assert data.agenda[0].telefono == "1234567890"
+    assert data.agenda[0].correo == "juan@example.com"
 
 
 def test_editar_contacto(rest_api):
