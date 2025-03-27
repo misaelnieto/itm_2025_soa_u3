@@ -29,5 +29,6 @@ hide:
 | Juan Carlos Paredes Gatopo | `jparedes` | `app.proyectos.jparedes` | `tests.jparedes` |  [Gestión de Libros :fontawesome-solid-book-open:](./jparedes/index.md){ .md-button .md-button--primary } |
 | Karim Antonio Soto López | `ksoto` | `app.proyectos.ksoto` | `tests.ksoto` |  [Registro de películas :fontawesome-regular-circle-play:](ksoto.md){ .md-button .md-button--primary } |
 | Kevin Hernandez Zazueta | `khernandez` | `app.proyectos.khernandez` | `tests.khernandez` |  [Control de inventario :fontawesome-solid-box-open:](khernandez.md){ .md-button .md-button--primary } |
-| Rodolfo García Galaz | `rgarcia` | `app.proyectos.rgarcia` | `tests.rgarcia` |  [Registro de recetas :fontawesome-solid-cookie-bite:](rgarcia.md){ .md-button .md-button--primary } |
+| Rodolfo García Galaz | `rgarcia` | `app.proyectos.rgarcia` | `tests.rgarcia` |  [Registro de recetas :fontawesome-solid-cookie-bite:](rgarcia\index.md){ .md-button .md-button--primary } |
 | Rosa Elena Palma y Meza Buelna | `rpalma` | `app.proyectos.rpalma` | `tests.rpalma` |  [Agenda de Contactos :fontawesome-solid-phone:](rpalma/index.md){ .md-button .md-button--primary } |
+
