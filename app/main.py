@@ -41,6 +41,7 @@ from fastapi import FastAPI
 from app.config import settings
 from app.db import initialize_database
 from app.log_utils import logger
+from fastapi.middleware.cors import CORSMiddleware
 
 
 def load_routes(app: FastAPI):
@@ -115,4 +116,12 @@ app = FastAPI(
             "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
         },
     ],
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Para desarrollo, en producción especifica los orígenes permitidos
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
