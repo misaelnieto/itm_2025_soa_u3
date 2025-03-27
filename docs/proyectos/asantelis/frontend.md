@@ -23,7 +23,6 @@ frontend/asantelis/app/
 │   ├── assets/            # Recursos como imágenes y SVGs
 │   ├── components/        # Componentes React reutilizables
 │   │   ├── AnimalesCrud.jsx  # Componente principal para el CRUD de animales
-│   │   └── Welcome.astro     # Componente de bienvenida
 │   ├── layouts/           # Plantillas de diseño para las páginas
 │   │   └── Layout.astro   # Diseño principal de la aplicación
 │   ├── pages/             # Páginas de la aplicación
@@ -182,11 +181,11 @@ El frontend con React/Astro incluye:
 
 1. 📝 **Formulario de Registro/Edición**: Un formulario con campos para el nombre, raza y edad del animal, y botones para agregar o actualizar el animal.
    
-   ![Formulario de registro](screenshot_01.png)
+![Formulario de registro](image-3.png)
 
 2. 📊 **Tabla de Animales**: Una tabla que muestra la lista de animales registrados, con columnas para ID, nombre, raza, edad y fecha de registro, y botones para editar y eliminar cada animal.
    
-   ![Tabla de animales](screenshot_02.png)
+ ![Tabla de animales](image-4.png)
 
 3. 🔔 **Alertas**: Mensajes de alerta que se muestran al usuario después de realizar operaciones, indicando si fueron exitosas o si ocurrió algún error.
 

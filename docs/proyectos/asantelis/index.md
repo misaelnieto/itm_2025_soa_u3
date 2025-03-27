@@ -50,7 +50,7 @@ sequenceDiagram
 
 Una vez que el usuario ha arrancado el frontend y los datos iniciales han sido cargados, el usuario puede registrar un nuevo animal mediante el formulario de registro. Cuando el usuario completa el formulario y hace clic en el botón "Agregar", el frontend realiza una petición al backend para registrar el nuevo animal.
 
-![Captura de pantalla del formulario de registro](image-1.png)
+![Captura de pantalla del formulario de registro](image-3.png)
 
 El formulario tiene validaciones básicas para no permitir campos vacíos, edades negativas, etc. Además del mensaje de error, el botón "Agregar" no se habilitará hasta que el usuario haya completado correctamente todos los campos requeridos.
 
