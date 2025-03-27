@@ -1,4 +1,9 @@
-"""Esquemas de validación de datos."""
+"""Esquemas de Pydantic para validación de datos de la API de animales.
+
+Este módulo contiene los modelos de Pydantic utilizados para validar los datos
+de entrada y salida en las operaciones CRUD de la API de animales.
+
+"""
 
 from datetime import datetime
 
@@ -6,25 +11,42 @@ from pydantic import BaseModel, Field, field_validator
 
 
 class AnimalCreate(BaseModel):
-    """Schema for creating a new animal."""
+    """Esquema para la creación de un nuevo registro de animal.
+
+    Este modelo valida los datos necesarios para crear un nuevo animal
+    en la base de datos, asegurando que todos los campos requeridos
+    estén presentes y sean válidos.
+
+    """
 
     nombre: str
-    """The name of the animal"""
+    """Nombre del animal (campo obligatorio)"""
     raza: str
-    """The breed of the animal"""
+    """Raza o especie del animal (campo obligatorio)"""
     edad: int = Field(..., ge=0)
-    """The age of the animal"""
+    """Edad del animal en años (debe ser mayor o igual a 0)"""
 
     @field_validator("nombre", "raza", mode="before")
     @classmethod
     def validate_not_empty(cls, v):
-        """Valida que los campos de texto no estén vacíos."""
+        """Valida que los campos de texto no estén vacíos.
+
+        Args:
+            v: Valor del campo a validar
+
+        Returns:
+            El valor validado si es válido
+
+        Raises:
+            ValueError: Si el campo está vacío o solo contiene espacios
+
+        """
         if not v or v.strip() == "":
             raise ValueError("field required")
         return v
 
     class Config:
-        """Configuration for the AnimalCreate model."""
+        """Configuración adicional para el modelo AnimalCreate."""
 
         json_schema_extra = {
             "examples": [
@@ -43,25 +65,42 @@ class AnimalCreate(BaseModel):
 
 
 class AnimalUpdate(BaseModel):
-    """Schema for updating an existing animal."""
+    """Esquema para actualizar un animal existente.
+
+    Este modelo permite actualizar parcialmente los datos de un animal,
+    haciendo que todos los campos sean opcionales pero validando que
+    si se proporcionan, sean válidos.
+
+    """
 
     nombre: str | None = None
-    """The name of the animal"""
+    """Nombre del animal (campo opcional)"""
     raza: str | None = None
-    """The breed of the animal"""
+    """Raza o especie del animal (campo opcional)"""
     edad: int | None = Field(None, ge=0)
-    """The age of the animal"""
+    """Edad del animal en años (opcional, debe ser mayor o igual a 0 si se proporciona)"""
 
     @field_validator("nombre", "raza")
     @classmethod
     def validate_not_empty(cls, v):
-        """Valida que los campos de texto no estén vacíos si se proporcionan."""
+        """Valida que los campos de texto no estén vacíos si se proporcionan.
+
+        Args:
+            v: Valor del campo a validar
+
+        Returns:
+            El valor validado si es válido o None
+
+        Raises:
+            ValueError: Si el campo proporcionado está vacío o solo contiene espacios
+
+        """
         if v is not None and (not v or v.strip() == ""):
             raise ValueError("field required")
         return v
 
     class Config:
-        """Configuration for the AnimalUpdate model."""
+        """Configuración adicional para el modelo AnimalUpdate."""
 
         json_schema_extra = {
             "examples": [
@@ -78,21 +117,26 @@ class AnimalUpdate(BaseModel):
 
 
 class AnimalResponse(BaseModel):
-    """Schema for the response of an animal registration."""
+    """Esquema para la respuesta de operaciones con animales.
+
+    Este modelo define la estructura de los datos que se devuelven
+    al cliente cuando se consulta información de un animal.
+
+    """
 
     id: int
-    """The ID of the animal"""
+    """Identificador único del animal en la base de datos"""
     nombre: str
-    """The name of the animal"""
+    """Nombre del animal"""
     raza: str
-    """The breed of the animal"""
+    """Raza o especie del animal"""
     edad: int
-    """The age of the animal"""
+    """Edad del animal en años"""
     created_at: datetime
-    """The timestamp when the animal was registered"""
+    """Fecha y hora de registro del animal en formato ISO 8601"""
 
     class Config:
-        """Configuration for the AnimalResponse model."""
+        """Configuración adicional para el modelo AnimalResponse."""
 
         orm_mode = True
         from_attributes = True

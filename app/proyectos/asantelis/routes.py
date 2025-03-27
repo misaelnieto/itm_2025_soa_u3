@@ -43,11 +43,17 @@ api_router = APIRouter(
 def animals_list(
     db: DbSession,
 ) -> list[Register]:
-    """Retrieve the list of all registered animals.
+    """Obtiene la lista de todos los animales registrados.
 
-    This endpoint returns all animals registered in the application.
+    Este endpoint devuelve todos los animales registrados en la aplicación
+    sin aplicar ningún filtro.
 
-    - **Returns**: `list[Register]`: A list of all registered animals.
+    Args:
+        db (DbSession): Sesión de base de datos inyectada por FastAPI.
+
+    Returns:
+        list[Register]: Una lista con todos los registros de animales.
+
     """
     return db.exec(select(Register)).all()
 
@@ -57,15 +63,19 @@ async def create_animal(
     animal: AnimalCreate,
     db: DbSession,
 ) -> AnimalResponse:
-    """Register a new animal.
+    """Registra un nuevo animal en la base de datos.
 
-    This endpoint registers a new animal in the application.
+    Este endpoint valida y registra un nuevo animal en la aplicación,
+    asignándole un ID único automáticamente.
 
-    **Args:**
-    - `animal` (`AnimalCreate`): The details of the animal to be registered.
+    Args:
+        animal (AnimalCreate): Los detalles del animal a registrar.
+        db (DbSession): Sesión de base de datos inyectada por FastAPI.
 
-    **Returns:**
-    - `AnimalResponse`: The response containing the registered animal details.
+    Returns:
+        AnimalResponse: La respuesta que contiene los detalles del animal registrado,
+                       incluyendo su ID y fecha de creación.
+
     """
     db_animal = Register(**animal.dict())
     db.add(db_animal)
@@ -79,18 +89,21 @@ async def get_animal(
     animal_id: int,
     db: DbSession,
 ) -> AnimalResponse:
-    """Retrieve details of a specific animal.
+    """Obtiene los detalles de un animal específico.
 
-    This endpoint retrieves the details of a specific animal by its ID.
+    Este endpoint recupera la información completa de un animal
+    a partir de su ID único.
 
-    **Args:**
-    - `animal_id` (`int`): The ID of the animal to be retrieved.
+    Args:
+        animal_id (int): El ID del animal a consultar.
+        db (DbSession): Sesión de base de datos inyectada por FastAPI.
 
-    **Returns:**
-    - `AnimalResponse`: The response containing the animal details.
+    Returns:
+        AnimalResponse: La respuesta que contiene los detalles del animal.
 
-    **Raises:**
-    - `HTTPException`: If the animal is not found, a 404 Not Found error is raised.
+    Raises:
+        HTTPException: Si el animal no se encuentra, se lanza un error 404 Not Found.
+
     """
     animal = db.get(Register, animal_id)
     if not animal:
@@ -104,19 +117,22 @@ async def update_animal(
     animal_update: AnimalUpdate,
     db: DbSession,
 ) -> AnimalResponse:
-    """Update details of a specific animal.
+    """Actualiza los detalles de un animal específico.
 
-    This endpoint updates the details of a specific animal by its ID.
+    Este endpoint permite modificar parcial o totalmente la información
+    de un animal existente a partir de su ID.
 
-    **Args:**
-    - `animal_id` (`int`): The ID of the animal to be updated.
-    - `animal_update` (`AnimalUpdate`): The updated details of the animal.
+    Args:
+        animal_id (int): El ID del animal a actualizar.
+        animal_update (AnimalUpdate): Los datos actualizados del animal.
+        db (DbSession): Sesión de base de datos inyectada por FastAPI.
 
-    **Returns:**
-    - `AnimalResponse`: The response containing the updated animal details.
+    Returns:
+        AnimalResponse: La respuesta que contiene los detalles actualizados del animal.
 
-    **Raises:**
-    - `HTTPException`: If the animal is not found, a 404 Not Found error is raised.
+    Raises:
+        HTTPException: Si el animal no se encuentra, se lanza un error 404 Not Found.
+
     """
     animal = db.get(Register, animal_id)
     if not animal:
@@ -136,15 +152,18 @@ async def delete_animal(
     animal_id: int,
     db: DbSession,
 ):
-    """Delete a specific animal registration.
+    """Elimina el registro de un animal específico.
 
-    This endpoint deletes a specific animal registration by its ID.
+    Este endpoint elimina permanentemente un registro de animal
+    de la base de datos a partir de su ID.
 
-    **Args:**
-    - `animal_id` (`int`): The ID of the animal to be deleted.
+    Args:
+        animal_id (int): El ID del animal a eliminar.
+        db (DbSession): Sesión de base de datos inyectada por FastAPI.
 
-    **Raises:**
-    - `HTTPException`: If the animal is not found, a 404 Not Found error is raised.
+    Raises:
+        HTTPException: Si el animal no se encuentra, se lanza un error 404 Not Found.
+
     """
     animal = db.get(Register, animal_id)
     if not animal:
@@ -152,4 +171,4 @@ async def delete_animal(
 
     db.delete(animal)
     db.commit()
-    return {"detail": "Animal deleted successfully"}
+    return {"detail": "Animal eliminado correctamente"}
