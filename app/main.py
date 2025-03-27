@@ -42,7 +42,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.db import initialize_database
 from app.log_utils import logger
-from fastapi.middleware.cors import CORSMiddleware
 
 
 def load_routes(app: FastAPI):
