@@ -17,7 +17,7 @@ El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los ar
 - ✏️ Actualizar información de un animal
 - 🗑️ Eliminar un registro de animal
 
-El frontend está construido con [React](https://reactjs.org/) y [Astro](https://astro.build/), proporcionando una interfaz web moderna y atractiva. Se conecta al backend mediante la url `http://127.0.0.1:8000/api/v1/asantelis/animales`.
+El frontend está construido con [React](https://reactjs.org/) y [Astro](https://astro.build/). Se conecta al backend mediante la url `http://127.0.0.1:8000/api/v1/asantelis/animales`.
 
 ### 🔄 Carga inicial de datos
 
