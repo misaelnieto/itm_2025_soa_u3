@@ -139,7 +139,7 @@ class MyTableWidget(QWidget):
 
         if not recipe_id.isdigit():
             # If the id is not a number, you can add an error message or handle it accordingly
-            self.showDialog('Las claves solamente pueden contener númreos.','Clav inválida',QMessageBox.Icon.Critical)
+            self.showDialog('Las claves solamente pueden contener números.','Clave inválida',QMessageBox.Icon.Critical)
             return
         # Get the recipe by ID
         recipe = api_consumer.get_recipe(int(recipe_id))
