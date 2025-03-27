@@ -19,6 +19,12 @@ def test_empty_database(rest_api):
     assert response.json() == []
 
 
+def test_get_book_with_non_numeric_id(rest_api):
+    """🔍 Tests the GET request for a book with a non-numeric id returns a validation error."""
+    response = rest_api.get(f"{BASE_PATH}/abc")
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
+
+
 def test_crud_books(rest_api):
     """📚 Tests the API to create, update, delete and get list of books."""
     response = rest_api.post(
