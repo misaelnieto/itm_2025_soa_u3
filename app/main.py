@@ -38,6 +38,7 @@ import pkgutil
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.config import settings
 from app.db import initialize_database
 from app.log_utils import logger
@@ -115,17 +116,13 @@ app = FastAPI(
             "name": "Alcancia",
             "description": "API para el proyecto de **Alcancia**. Sólo contiene 2 rutas.",
         },
+        {
+            "name": "Recetas",
+            "description": "API para el proyecto de **Recetas**. Contiene rutas para gestionar recetas.",
+        },
     ],
 )
 
-
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "https://localhost:3000",
-    "http://127.0.0.1:3000",  # Agregado para permitir este origen
-    "https://127.0.0.1:3000",  # Agregado para permitir este origen
-]
 
 app.add_middleware(
     CORSMiddleware,
@@ -133,4 +130,6 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],  # Permite todos los métodos HTTP (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],  # Permite todos los encabezados.
+
 )
+

@@ -26,8 +26,9 @@ hide:
 | Jazmin Heredia Cota | `jheredia` | `app.proyectos.jheredia` | `tests.jheredia` |  [Registro de Ciudades :fontawesome-solid-map-location:](jheredia.md){ .md-button .md-button--primary } |
 | Jesús Javier Chaidez Delgado | `jchaidez` | `app.proyectos.jchaidez` | `tests.jchaidez` |  [Gestión de Cursos :fontawesome-solid-graduation-cap:](jchaidez.md){ .md-button .md-button--primary } |
 | José Manuel Arce Higuera | `jarce` | `app.proyectos.jarce` | `tests.jarce` |  [Registro de Empleados :fontawesome-solid-user-tie:](jarce.md){ .md-button .md-button--primary } |
-| Juan Carlos Paredes Gatopo | `jparedes` | `app.proyectos.jparedes` | `tests.jparedes` |  [Gestión de Libros :fontawesome-solid-book-open:](jparedes.md){ .md-button .md-button--primary } |
+| Juan Carlos Paredes Gatopo | `jparedes` | `app.proyectos.jparedes` | `tests.jparedes` |  [Gestión de Libros :fontawesome-solid-book-open:](./jparedes/index.md){ .md-button .md-button--primary } |
 | Karim Antonio Soto López | `ksoto` | `app.proyectos.ksoto` | `tests.ksoto` |  [Registro de películas :fontawesome-regular-circle-play:](ksoto.md){ .md-button .md-button--primary } |
 | Kevin Hernandez Zazueta | `khernandez` | `app.proyectos.khernandez` | `tests.khernandez` |  [Control de inventario :fontawesome-solid-box-open:](khernandez.md){ .md-button .md-button--primary } |
-| Rodolfo García Galaz | `rgarcia` | `app.proyectos.rgarcia` | `tests.rgarcia` |  [Registro de recetas :fontawesome-solid-cookie-bite:](rgarcia.md){ .md-button .md-button--primary } |
-| Rosa Elena Palma y Meza Buelna | `rpalma` | `app.proyectos.rpalma` | `tests.rpalma` |  [Agenda de Contactos :fontawesome-solid-phone:](rpalma.md){ .md-button .md-button--primary } |
+| Rodolfo García Galaz | `rgarcia` | `app.proyectos.rgarcia` | `tests.rgarcia` |  [Registro de recetas :fontawesome-solid-cookie-bite:](rgarcia\index.md){ .md-button .md-button--primary } |
+| Rosa Elena Palma y Meza Buelna | `rpalma` | `app.proyectos.rpalma` | `tests.rpalma` |  [Agenda de Contactos :fontawesome-solid-phone:](rpalma/index.md){ .md-button .md-button--primary } |
+
