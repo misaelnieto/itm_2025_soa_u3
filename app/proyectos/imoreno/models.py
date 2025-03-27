@@ -19,11 +19,12 @@ class Operation(SQLModel, table=True):
     """Model to register operations in the database."""
 
     __tablename__ = "hotel_operacion"
-    client_id: int | None = Field(default=None, primary_key=True)
+    client_id: int | None = Field(default=None, primary_key=True, nullable=True)
     first_name: str = Field(title="First Name", nullable=False)
     middle_name: str = Field(title="Middle Name", nullable=False)
     last_name: str = Field(title="Last Name", nullable=False)
     email: EmailStr = Field(title="Email", nullable=True)
+    room: int = Field(title="Room Number", nullable=True)
     check_in: datetime = Field(
         title="Checked In at",
         default_factory=now_utc,

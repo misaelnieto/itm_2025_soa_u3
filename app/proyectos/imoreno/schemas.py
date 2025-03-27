@@ -7,14 +7,14 @@ from pydantic import BaseModel, EmailStr
 
 class ClientUpdate(BaseModel):
     """Schema for updating client information."""
-    
+
     first_name: str | None = None
     middle_name: str | None = None
     last_name: str | None = None
     email: EmailStr | None = None
     room: int | None = None
     check_in: datetime | None = None
-
+    
 class OperationType(StrEnum):
     """Defines the operation type."""
 
