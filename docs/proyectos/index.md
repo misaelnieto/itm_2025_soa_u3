@@ -18,7 +18,7 @@ hide:
 | --- | --- | --- | --- | --- |
 | Adrian Fernando Santelis Mendoza | `asantelis` | `app.proyectos.asantelis` | `tests.asantelis` | [Registro de animales :fontawesome-solid-dog:](asantelis.md){ .md-button .md-button--primary } |
 | David Ramos Luna | `dramos` | `app.proyectos.dramos` | `tests.dramos` | [Catálogo de Productos :fontawesome-solid-store:](./dramos/dramos.md){ .md-button .md-button--primary } |
-| Diego Iván Dueñas Padilla | `dduenas` | `app.proyectos.dduenas` | `tests.dduenas` | [Registro de estudiantes :fontawesome-solid-school-flag:](dduenas.md){ .md-button .md-button--primary } |
+| Diego Iván Dueñas Padilla | `dduenas` | `app.proyectos.dduenas` | `tests.dduenas` | [Registro de estudiantes :fontawesome-solid-school-flag:](dduenas/index.md){ .md-button .md-button--primary } |
 | Fabian Ignacio Calzada Lozano | `fcalzada` | `app.proyectos.fcalzada` | `tests.fcalzada` | [Registro de vehículos :fontawesome-solid-car-on:](fcalzada.md){ .md-button .md-button--primary } |
 | Imanol Maximiliano Mayo Alvaro | `imayo` | `app.proyectos.imayo` | `tests.imayo` |  [Registro de Eventos :fontawesome-solid-envelope-open-text:](imayo.md){ .md-button .md-button--primary } |
 | Isaí Moreno Mendoza | `imoreno` | `app.proyectos.imoreno` | `tests.imoreno` |  [Registro de Hoteles :fontawesome-solid-hotel:](imoreno.md){ .md-button .md-button--primary } |

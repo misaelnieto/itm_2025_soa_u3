@@ -1,4 +1,4 @@
-"""API routes for managing books in the application.
+"""API routes for managing students in the application.
 
 Routes:
     - `POST /estudiantes`: Create a new student.
