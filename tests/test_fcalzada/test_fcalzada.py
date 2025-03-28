@@ -10,7 +10,7 @@ BASE_URL = "http://0.0.0.0:8000/api/v1/fcalzada/registro_carro"
 
 BASE_PATH = "/api/v1/fcalzada/"
 @pytest.mark.asyncio
-async def test_add_car():
+async def test_add_car():  # noqa: D103
     async with AsyncClient(transport=ASGITransport(app=app), base_url=BASE_URL) as client:
         response = await client.post(f"{BASE_PATH}/registro_carro/registro/{CarroType.entrada}", json={
             "marca": "Toyota",

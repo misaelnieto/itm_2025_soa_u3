@@ -106,7 +106,7 @@ async def registrar_carro(
 ###################################################################################
 ###################################################################################
 @api_router.put("/actualizar/{id}", tags=["Registro de Carros"], status_code=status.HTTP_200_OK)
-async def actualizar_carro(id: int, marca: str, modelo: str, año: int, color: str, db: DbSession) -> CarroResponse:
+async def actualizar_carro(id: int, marca: str, modelo: str, año: int, color: str, db: DbSession) -> CarroResponse:  # noqa: A002
     """Actualiza un carro existente por ID.
 
     Este endpoint permite actualizar un carro registrado en el sistema, cambiando sus atributos como marca, modelo, año y color.
