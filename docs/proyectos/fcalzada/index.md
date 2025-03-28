@@ -18,22 +18,26 @@ schemas.py: Contiene las clases que definen la estructura de los JSON que la API
 # Registro de un carro
 
 cuando un usuario quiere registrar un carro, solo debe llenar los campo con los datos solicitados, que serian Marca, Modelo, Año y Color, despues de insertar los datos se preciona el boton de Registrar carro y listo.
-![Captura de pantalla de la seccion de registro de un nuevo carro](image_1.png){ width="50%" align=left }
+
+![Captura de pantalla de la seccion de registro de un nuevo carro](image_1.png){width="60%"}
 
 # Mostrar lista de carros
 
 Si un usuario quiere revisar la lista de carros que tiene registrados, solo debe ir a la seccion de Carros registrados y dar clik en el boton.
-![Captura de pantalla de la seccion de mostrar carros](image_3.png){ width="50%" align=left }
+
+![Captura de pantalla de la seccion de mostrar carros](image_3.png){width="60%"}
 
 # Eliminar carros
 
 Si un usuario por alguna razon quiere eliminar uno de los carros existentes de la lista solo se necesita el ID correspondiente al carro que se quiere eliminar, dicho ID se obtiene en la listra de carros registrados, al poner el id en el campo y dar clik al bopton se elimina de la base de datos.
-![Captura de pantalla de la seccion de mostrar carros](image_2.png){ width="50%" align=left }
+
+![Captura de pantalla de la seccion de mostrar carros](image_2.png){width="60%" }
 
 # Eliminar carros
 
-Si un usuario desea solo modificar algun dato de un carro registrado tiene que llenar los campós con con la nueva informacion del carro pero empezando con la ID del carro
-![Captura de pantalla de la seccion de mostrar carros](image_4.png){ width="50%" align=left }
+Si un usuario desea solo modificar algun dato de un carro registrado tiene que llenar los campós con con la nueva informacion del carro pero empezando con la ID del carro.
+
+![Captura de pantalla de la seccion de mostrar carros](image_4.png){ width="60%"}
 
 # Routes
 
