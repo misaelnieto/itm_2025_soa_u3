@@ -84,3 +84,4 @@ plugins:
         paths:
           - tests
           - app
+          - docs/proyectos/imoreno/imoreno.md
