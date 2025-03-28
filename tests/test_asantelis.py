@@ -73,6 +73,15 @@ def test_update_animal(rest_api):
     assert r.raza == updated_animal["raza"]
     assert r.edad == updated_animal["edad"]
 
+    # Update animal that does not exist
+    response = rest_api.put(f"{BASE_PATH}/1000", json=updated_animal)
+    assert response.status_code == status.HTTP_404_NOT_FOUND
+
+    # Update animal with an empty field
+    updated_animal = {"nombre": "Max", "raza": "", "edad": 6}
+    response = rest_api.put(f"{BASE_PATH}/{animal_id}", json=updated_animal)
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
+
 
 def test_delete_animal(rest_api):
     """🗑️ Test deleting animal records."""
@@ -97,6 +106,10 @@ def test_delete_animal(rest_api):
     response = rest_api.get(f"{BASE_PATH}/")
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == []
+
+    # Delete animal that does not exist
+    response = rest_api.delete(f"{BASE_PATH}/1000")
+    assert response.status_code == status.HTTP_404_NOT_FOUND
 
 
 def test_animal_validation(rest_api):
@@ -161,3 +174,7 @@ def test_animal_validation(rest_api):
     r = response.json()
     assert r["detail"][0]["loc"] == ["body", "raza"]
     assert "field required" in r["detail"][0]["msg"]
+
+    # Get animal that does not exist
+    response = rest_api.get(f"{BASE_PATH}/1000")
+    assert response.status_code == status.HTTP_404_NOT_FOUND
