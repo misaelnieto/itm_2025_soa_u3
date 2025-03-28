@@ -27,6 +27,12 @@ nav:
         - Autodocs backend: proyectos/nnieto/backend.md
         - Autodocs frontend: proyectos/nnieto/frontend.md
         - Autodocs pruebas: proyectos/nnieto/tests.md
+      - Peliculas:
+          - Presentación: proyectos/ksoto/index.md
+          - Schemas: proyectos/ksoto/schemas.md
+          - Modelos: proyectos/ksoto/models.md
+          - Servidor nodeJS: proyectos/ksoto/frontend.md
+          - Pruebas: proyectos/ksoto/test.md
 
 theme:
   name: material
