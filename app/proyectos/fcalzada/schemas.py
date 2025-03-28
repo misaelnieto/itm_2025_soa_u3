@@ -1,18 +1,29 @@
-"""Documentacion."""
+"""Esquemas y enumeraciones para el registro de carros."""
 from enum import StrEnum
 
 from pydantic import BaseModel
 
 
 class CarroType(StrEnum):
-    """Define el tipo de registro de carro. Solo dos tipos en este momento."""
+    """Define el tipo de registro de carro.
+
+    Tipos disponibles:
+        - `entrada`: Registro de entrada de un carro al inventario.
+        - `salida`: Registro de salida de un carro del inventario.
+    """
 
     entrada = "entrada"  # Cambié 'deposit' a 'entrada'
     salida = "salida"    # Cambié 'withdraw' a 'salida'
 
 
 class CarroResult(StrEnum):
-    """El resultado del registro de carro."""
+    """Define los posibles resultados de un registro de carro.
+
+    Resultados:
+        - `registrado`: El registro fue exitoso.
+        - `fallido`: El registro no pudo completarse.
+        - `rechazado`: El registro fue rechazado (por ejemplo, falta de inventario).
+    """
 
     registrado = "registrado"  # Cambié 'settled' a 'registrado'
     fallido = "fallido"        # Cambié 'failed' a 'fallido'
@@ -20,14 +31,48 @@ class CarroResult(StrEnum):
 
 
 class CarroResponse(BaseModel):
-    """Representa el resultado del registro de carro."""
+    """Representa la respuesta después de realizar un registro de carro.
+
+    Atributos:
+        result (CarroResult): Resultado del registro (`registrado`, `fallido` o `rechazado`).
+        previous_inventory (int | None): Inventario antes del registro (opcional).
+        inventory (int | None): Inventario después del registro (opcional).
+
+    Ejemplos JSON:
+        - Entrada exitosa:
+        ```json
+        {
+            "result": "registrado",
+            "previous_inventory": 5,
+            "inventory": 6
+        }
+        ```
+
+        - Salida exitosa:
+        ```json
+        {
+            "result": "registrado",
+            "previous_inventory": 5,
+            "inventory": 4
+        }
+        ```
+
+        - Registro rechazado por falta de inventario:
+        ```json
+        {
+            "result": "rechazado",
+            "previous_inventory": 5,
+            "inventory": 5
+        }
+        ```
+    """
 
     result: CarroResult
-    """El resultado de este registro de carro"""
+    """El resultado del registro de carro (`registrado`, `fallido` o `rechazado`)."""
     previous_inventory: int | None
-    """El inventario antes de realizar el registro"""
+    """Inventario antes del registro (opcional)."""
     inventory: int | None
-    """El inventario después de realizar el registro"""
+    """Inventario después del registro (opcional)."""
 
     model_config = {
         "json_schema_extra": {
@@ -50,13 +95,11 @@ class CarroResponse(BaseModel):
             ],
         },
     }
-
+    """Configuración adicional para mostrar ejemplos JSON en la documentación de la API."""
 
 class CarroCreate(BaseModel):
     """Esquema para crear un nuevo registro de carro."""
 
-    cantidad: int
-    """Cantidad de carros para registrar."""
     marca: str
     """Marca del carro."""
     modelo: str
@@ -66,8 +109,7 @@ class CarroCreate(BaseModel):
     color: str
     """Color del carro."""
 
-    class Config:  # noqa: D106
-        orm_mode = True
+   
 
 
 class Carro(CarroCreate):
@@ -75,8 +117,7 @@ class Carro(CarroCreate):
 
     id: int
     """ID del carro registrado."""
-    created_at: str
-    """Fecha de registro del carro."""
 
     class Config:  # noqa: D106
         orm_mode = True
+        """Configuración para habilitar la compatibilidad con ORMs."""
