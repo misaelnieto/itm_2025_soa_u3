@@ -1,0 +1,375 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+
+
+nav{
+    position: relative;
+    width: 100%;
+    height: 20vh;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.644);
+    z-index: 1;
+}
+
+
+nav > .logo{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+nav > .logo > .image_logo{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+nav > .logo > .image_logo > img{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+nav > .logo > .caption_logo{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav > .logo > .caption_logo >span{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    font-size: 1.2rem;
+}
+
+nav > .opciones{
+    position: relative;
+    width: 75%;
+    height: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav > .opciones > a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    height: 100%;
+}
+
+nav > .opciones > a:hover{
+    border-bottom: 1px solid white;
+}
+
+.rest_ofHTML{
+    position: relative;
+    background:url("https://www.hdwallpapers.in/download/yotsuba_nakano_ichika_nakano_itsuki_nakano_miku_nakano_nino_nakano_hd_the_quintessential_quintuplets-2560x1440.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100%;
+    height: 80vh;
+}
+
+
+.all_container{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: relative;
+    width: 100%;
+    height: 35vh;
+}
+
+
+.container {
+    position: relative;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    row-gap: 10px;
+}
+
+
+
+.operacion {
+    position: relative;
+    height: 100%;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.788);
+    overflow: hidden;
+}
+
+.operacion:hover{
+    cursor: pointer;
+}
+
+.caption{
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    top: 100%;
+    transform: translateY(-100%);
+    background-color: rgba(255, 255, 255, 0.884);
+    display: flex;
+    justify-content: center;
+}
+
+.caption > span{
+    padding-top: 2%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+
+.container_img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+.container_img > img{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+form{
+    position: absolute;
+    display: none;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 45%;
+    height: 60vh;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.685);
+    border: 1px solid black;
+    background-color: rgb(180, 186, 240);
+}
+
+form > .close{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    padding: 4px 13px 4px 13px;
+    background-color: rgb(255, 31, 31);
+    border: none;
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+form > .close:hover{
+    cursor: pointer;
+}
+
+
+
+form > .withPadding{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.up{
+    position: relative;
+    width: 100%;
+    height: 20%;
+}
+
+.middle{
+    position: relative;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.register{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: row;
+}
+
+.register > label{
+    position: relative;
+    width: 35%;
+}
+
+.register > input{
+    position: relative;
+    width: 65%;
+    height: fit-content;
+}
+
+.down{
+    position: relative;
+    width: 100%;
+    height: 20%;
+}
+
+
+.up > h1{
+    position: relative;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.down > button{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.down > button:hover{
+    cursor: pointer;
+}
+
+
+.fillData{
+    position:fixed;
+    top: 90%;
+    left: 99%;
+    transform: translate(-100%,-100%);
+    width: 400px;
+    height: 120px;
+    background-color: rgb(216, 216, 216);
+    z-index: 2;
+    display: none;
+    box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.849);
+}
+
+.fiPadding{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: row;
+}
+
+.fiPadding > img{
+    position: relative;
+    width: 35%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.fiPadding > .info{
+    position: relative;
+    width: 65%;
+    height: 100%;
+}
+
+
+.fiPadding > .info > div{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+}
+
+
+.peliculaAlert{
+    position: absolute;
+    z-index: 5;
+    display: none;
+    width: 35%;
+    height: 40vh;
+    background-color: rgb(223, 223, 223);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.788);
+}
+
+
+
+.peliculaPadding{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.titt{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.titt > h2{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+
+.fieldRe{
+    position: relative;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+}
