@@ -37,4 +37,9 @@ class TransactionRead(TransactionBase):
 
         orm_mode = True
 
-    
+
+
+class Eliminado(BaseModel):
+    """Message when the student is deleted."""
+
+    message :  str

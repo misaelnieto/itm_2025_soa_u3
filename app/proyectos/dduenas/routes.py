@@ -23,12 +23,14 @@ Dependencies:
     - `.models`: Module containing the Transaction model.
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
+
+from fastapi import APIRouter, HTTPException, status
 from sqlmodel import select
 
-from app.db import get_session
+from app.db import DbSession
 
-from .models import Student as Transaction
+from .models import Transaction
+from .schemas import Eliminado
 
 api_router = APIRouter(
     prefix="/estudiantes",
@@ -63,14 +65,14 @@ def get_estudiantes(db: DbSession) -> list[Transaction]:
         db (DbSession): Sesión de base de datos.
 
     Returns:
-        list[Transaction]: Lista de libros en la base de datos.
+        list[Transaction]: Lista de estudiantes en la base de datos.
 
     """
     return db.exec(select(Transaction)).all()
 
 
 @api_router.get("/{Estudiante_id}", tags=["Estudiantes"])
-def get_Estudiante(Estudiante_id: int, db: DbSession) -> Transaction:
+def get_estudiante(Estudiante_id: int, db: DbSession) -> Transaction:
     """Obtener un estudiante por su ID.
 
     Args:
@@ -134,3 +136,4 @@ def delete_estudiante(estudiante_id: int, db: DbSession):
         )
     db.delete(estudiante)
     db.commit()
+    return Eliminado(message="Estudiante eliminado correctamente.")
