@@ -1,5 +1,4 @@
 """gh."""
-import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -24,7 +23,7 @@ carro_actualizado = {
 
 
 # ✅ Prueba para agregar un carro (POST)
-def test_agregar_carro(rest_api):
+def test_agregar_carro(rest_api):  # noqa: D103
     response = rest_api.post("/api/v1/fcalzada/registro_carro/registro/entrada", json=carro_nuevo)
     assert response.status_code == 201
     data = response.json()
@@ -35,7 +34,7 @@ def test_agregar_carro(rest_api):
 
 
 # ✅ Prueba para listar todos los carros (GET)
-def test_listar_carros(rest_api):
+def test_listar_carros(rest_api):  # noqa: D103
     response = rest_api.get("/api/v1/fcalzada/registro_carro/carros")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
@@ -43,7 +42,7 @@ def test_listar_carros(rest_api):
 
 
 # ✅ Prueba para actualizar un carro (PUT)
-def test_actualizar_carro(rest_api):
+def test_actualizar_carro(rest_api):  # noqa: D103
     # Primero, agregamos un carro para obtener su ID
     post_response = rest_api.post("/api/v1/fcalzada/registro_carro/registro/normal", json=carro_nuevo)
     carro_id = post_response.json()["id"]
@@ -59,7 +58,7 @@ def test_actualizar_carro(rest_api):
 
 
 # ✅ Prueba para eliminar un carro (DELETE)
-def test_eliminar_carro(rest_api):
+def test_eliminar_carro(rest_api):  # noqa: D103
     # Primero, agregamos un carro para obtener su ID
     post_response = rest_api.post("/api/v1/fcalzada/registro_carro/registro/normal", json=carro_nuevo)
     carro_id = post_response.json()["id"]
@@ -69,5 +68,5 @@ def test_eliminar_carro(rest_api):
     assert delete_response.status_code == 200
 
     # Verificamos que ya no existe
-    get_response = rest_api.get(f"/api/v1/fcalzada/registro_carro/carros")
+    get_response = rest_api.get(f"/api/v1/fcalzada/registro_carro/carros")  # noqa: F541
     assert all(carro["id"] != carro_id for carro in get_response.json())
