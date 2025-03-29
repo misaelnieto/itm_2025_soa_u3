@@ -22,7 +22,7 @@ class Transaction(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     nombre: str = Field(title="Nombre", nullable=False)
     carrera: str = Field(title="Carrera", nullable=False)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=now_utc)
 
 
 
