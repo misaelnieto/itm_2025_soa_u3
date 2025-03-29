@@ -121,9 +121,9 @@ El código fuente del backend se encuentra en el módulo `app/proyectos/nnieto`.
 
 A continuacion se muestran los links a la documentación de cada submódulo.
 
-[Documentación de rutas](autodocs.md#routes){ .md-button .md-button--primary}
-[Documentación de modelos](autodocs.md#models){ .md-button .md-button--primary}
-[Documentación de esquemas](autodocs.md#schemas){ .md-button .md-button--primary}
+[Documentación de rutas](backend.md#routes){ .md-button .md-button--primary}
+[Documentación de modelos](backend.md#models){ .md-button .md-button--primary}
+[Documentación de esquemas](backend.md#schemas){ .md-button .md-button--primary}
 
 
 ### Cómo arrancar el backend
