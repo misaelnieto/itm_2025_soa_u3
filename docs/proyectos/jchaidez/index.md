@@ -142,17 +142,13 @@ El código fuente del backend se encuentra en el módulo `app/proyectos/jchaidez
 
 A continuación se muestran los links a la documentación de cada submódulo.
 
-[Documentación de rutas](autodocs.md#routes){ .md-button .md-button--primary}
-[Documentación de modelos](autodocs.md#models){ .md-button .md-button--primary}
-[Documentación de esquemas](autodocs.md#schemas){ .md-button .md-button--primary}
-
 
 ## Cómo arrancar el backend
 
 Para iniciar el backend, utiliza el siguiente comando:
 
 ```bash
-uvicorn app.main:app --reload
+uv run uvicorn app.main:app --reload
 ```
 
 ---
@@ -178,4 +174,14 @@ El código fuente del frontend se encuentra en el directorio `/frontend/jchaidez
 
 ### Cómo arrancar el frontend
 
-Primero arranca el backend, luego abre el archivo `cursos.html` en tu navegador para interactuar con la interfaz.
+Primero arranca el backend, luego ejecutar el siguiente comando para entrar al directorio del frontend:
+
+```bash
+cd frontend/jchaidez
+```
+
+Una vez estemos en el directorio del frontend, procedemos a ejecutar el siguiente comando:
+
+```bash
+python -m http.server 3000 --bind 127.0.0.1
+```

@@ -6,106 +6,75 @@ document.getElementById("curso-form").addEventListener("submit", async function(
     const nombre = document.getElementById("nombre").value;
     const descripcion = document.getElementById("descripcion").value;
     const maestro = document.getElementById("maestro").value;
+    
+    if (!nombre || !descripcion || !maestro) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
 
-    try {
-        const response = await fetch(`${API_URL}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre, descripcion, maestro })
-        });
-        if (!response.ok) throw new Error("Error al agregar el curso");
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, descripcion, maestro })
+    });
+    if (response.ok) {
         cargarCursos();
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
+        document.getElementById("curso-form").reset();
     }
 });
 
 async function cargarCursos() {
-    const response = await fetch(`${API_URL}`);
-    if (!response.ok) {
-        console.error("Error al cargar los cursos:", response.statusText);
-        return;
-    }
+    const response = await fetch(API_URL);
     const cursos = await response.json();
-    const lista = document.getElementById("cursos-list");
-    lista.innerHTML = "";  // Limpiar la tabla antes de agregar los nuevos cursos
-
+    const tabla = document.getElementById("cursos-list");
+    tabla.innerHTML = "";
     cursos.forEach(curso => {
-        const tr = document.createElement("tr");  // Crear una nueva fila para cada curso
-
-        // Crear celdas para el ID, Nombre, Descripción y Maestro
-        const tdId = document.createElement("td");
-        tdId.textContent = curso.id;
-
-        const tdNombre = document.createElement("td");
-        tdNombre.textContent = curso.nombre;
-
-        const tdDescripcion = document.createElement("td");
-        tdDescripcion.textContent = curso.descripcion;
-
-        const tdMaestro = document.createElement("td");
-        tdMaestro.textContent = curso.maestro;
-
-        // Crear las acciones (eliminar y actualizar)
-        const tdAcciones = document.createElement("td");
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Eliminar";
-        deleteButton.addEventListener("click", () => eliminarCurso(curso.id));
-
-        const updateButton = document.createElement("button");
-        updateButton.textContent = "Actualizar";
-        updateButton.addEventListener("click", () => actualizarCurso(curso.id));
-
-        tdAcciones.appendChild(deleteButton);
-        tdAcciones.appendChild(updateButton);
-
-        // Agregar las celdas a la fila
-        tr.appendChild(tdId);
-        tr.appendChild(tdNombre);
-        tr.appendChild(tdDescripcion);
-        tr.appendChild(tdMaestro);
-        tr.appendChild(tdAcciones);
-
-        // Agregar la fila a la tabla
-        lista.appendChild(tr);
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${curso.id}</td>
+            <td contenteditable="true" class="editable">${curso.nombre}</td>
+            <td contenteditable="true" class="editable">${curso.descripcion}</td>
+            <td contenteditable="true" class="editable">${curso.maestro}</td>
+            <td>
+                <button onclick="guardarEdicion(${curso.id}, this)">Guardar</button>
+                <button onclick="eliminarCurso(${curso.id})">Eliminar</button>
+            </td>
+        `;
+        tabla.appendChild(fila);
     });
 }
 
-
-async function eliminarCurso(id) {
-    try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: "DELETE",
-        });
-        if (!response.ok) throw new Error("Error al eliminar el curso");
+async function guardarEdicion(id, boton) {
+    const fila = boton.parentElement.parentElement;
+    const nombre = fila.children[1].textContent.trim();
+    const descripcion = fila.children[2].textContent.trim();
+    const maestro = fila.children[3].textContent.trim();
+    
+    if (!nombre || !descripcion || !maestro) {
+        alert("Todos los campos deben estar llenos");
+        return;
+    }
+    
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, descripcion, maestro })
+    });
+    
+    if (response.ok) {
+        alert("Curso actualizado correctamente");
         cargarCursos();
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
     }
 }
 
-async function actualizarCurso(id) {
-    const nuevoNombre = prompt("Ingrese el nuevo nombre del curso:");
-    const nuevaDescripcion = prompt("Ingrese la nueva descripción:");
-    const nuevoMaestro = prompt("Ingrese el nuevo nombre del maestro:");
-
-    try {
+async function eliminarCurso(id) {
+    if (confirm("¿Estás seguro de que deseas eliminar este curso?")) {
         const response = await fetch(`${API_URL}/${id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                nombre: nuevoNombre,
-                descripcion: nuevaDescripcion,
-                maestro: nuevoMaestro
-            })
+            method: "DELETE",
         });
-        if (!response.ok) throw new Error("Error al actualizar el curso");
-        cargarCursos();
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
+        if (response.ok) {
+            cargarCursos();
+        }
     }
 }
 

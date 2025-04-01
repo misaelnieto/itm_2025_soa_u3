@@ -24,7 +24,7 @@ hide:
 | Isaí Moreno Mendoza | `imoreno` | `app.proyectos.imoreno` | `tests.imoreno` |  [Registro de Hoteles :fontawesome-solid-hotel:](imoreno.md){ .md-button .md-button--primary } |
 | Javier Contreras Partida | `jcontreras` | `app.proyectos.jcontreras` | `tests.jcontreras` |  [Registro de Ventas :fontawesome-solid-chart-line:](jcontreras/index.md){ .md-button .md-button--primary } |
 | Jazmin Heredia Cota | `jheredia` | `app.proyectos.jheredia` | `tests.jheredia` |  [Registro de Ciudades :fontawesome-solid-map-location:](jheredia.md){ .md-button .md-button--primary } |
-| Jesús Javier Chaidez Delgado | `jchaidez` | `app.proyectos.jchaidez` | `tests.jchaidez` |  [Gestión de Cursos :fontawesome-solid-graduation-cap:](jchaidez.md){ .md-button .md-button--primary } |
+| Jesús Javier Chaidez Delgado | `jchaidez` | `app.proyectos.jchaidez` | `tests.jchaidez` |  [Gestión de Cursos :fontawesome-solid-graduation-cap:](jchaidez/index.md){ .md-button .md-button--primary } |
 | José Manuel Arce Higuera | `jarce` | `app.proyectos.jarce` | `tests.jarce` |  [Registro de Empleados :fontawesome-solid-user-tie:](jarce.md){ .md-button .md-button--primary } |
 | Juan Carlos Paredes Gatopo | `jparedes` | `app.proyectos.jparedes` | `tests.jparedes` |  [Gestión de Libros :fontawesome-solid-book-open:](jparedes.md){ .md-button .md-button--primary } |
 | Karim Antonio Soto López | `ksoto` | `app.proyectos.ksoto` | `tests.ksoto` |  [Registro de películas :fontawesome-regular-circle-play:](ksoto/index.md){ .md-button .md-button--primary } |
