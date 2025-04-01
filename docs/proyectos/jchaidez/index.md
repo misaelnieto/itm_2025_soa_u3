@@ -9,7 +9,7 @@
 
 ## Descripción general del funcionamiento del backend y el frontend
 
-El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los archivos de implementación se encuentran en la ruta `/app/proyectos/jchaidez`. Ahi se definen las principales operaciones que permiten gestionar los cursos:
+El backend está construido con [FastAPI](https://fastapi.tiangolo.com/). Los archivos de implementación se encuentran en la ruta `/app/proyectos/jchaidez`. Ahí se definen las principales operaciones que permiten gestionar los cursos:
 
 - Creación de un nuevo curso.
 - Actualización de un curso existente.
