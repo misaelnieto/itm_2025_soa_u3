@@ -69,10 +69,10 @@ def test_actualizar_carro(rest_api):  # noqa: D103
 
 
 # ✅ Prueba para eliminar un carro (DELETE) /////////////////////////////////////////////////////////////////////////////////
-def test_eliminar_carro(rest_api):
+def test_eliminar_carro(rest_api):  # noqa: ARG001, D103
     # Primero, registra un carro
     post_response = client.post("/api/v1/fcalzada/registro_carro/registro/entrada", json={
-        "marca": "Toyota", "modelo": "Corolla", "año": 2020, "color": "Rojo"
+        "marca": "Toyota", "modelo": "Corolla", "año": 2020, "color": "Rojo",
     })
     assert post_response.status_code == 201
     
