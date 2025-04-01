@@ -21,7 +21,7 @@ hide:
 | Diego Iván Dueñas Padilla | `dduenas` | `app.proyectos.dduenas` | `tests.dduenas` | [Registro de estudiantes :fontawesome-solid-school-flag:](dduenas/index.md){ .md-button .md-button--primary } |
 | Fabian Ignacio Calzada Lozano | `fcalzada` | `app.proyectos.fcalzada` | `tests.fcalzada` | [Registro de vehículos :fontawesome-solid-car-on:](fcalzada.md){ .md-button .md-button--primary } |
 | Imanol Maximiliano Mayo Alvaro | `imayo` | `app.proyectos.imayo` | `tests.imayo` |  [Registro de Eventos :fontawesome-solid-envelope-open-text:](imayo.md){ .md-button .md-button--primary } |
-| Isaí Moreno Mendoza | `imoreno` | `app.proyectos.imoreno` | `tests.imoreno` |  [Registro de Hoteles :fontawesome-solid-hotel:](imoreno.md){ .md-button .md-button--primary } |
+| Isaí Moreno Mendoza | `imoreno` | `app.proyectos.imoreno` | `tests.imoreno` |  [Registro de Hoteles :fontawesome-solid-hotel:](imoreno/index.md){ .md-button .md-button--primary } |
 | Javier Contreras Partida | `jcontreras` | `app.proyectos.jcontreras` | `tests.jcontreras` |  [Registro de Ventas :fontawesome-solid-chart-line:](jcontreras/index.md){ .md-button .md-button--primary } |
 | Jazmin Heredia Cota | `jheredia` | `app.proyectos.jheredia` | `tests.jheredia` |  [Registro de Ciudades :fontawesome-solid-map-location:](jheredia.md){ .md-button .md-button--primary } |
 | Jesús Javier Chaidez Delgado | `jchaidez` | `app.proyectos.jchaidez` | `tests.jchaidez` |  [Gestión de Cursos :fontawesome-solid-graduation-cap:](jchaidez/index.md){ .md-button .md-button--primary } |
