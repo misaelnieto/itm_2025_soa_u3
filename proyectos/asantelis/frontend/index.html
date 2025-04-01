@@ -1,0 +1,1557 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación de la Unidad 3 de la materia de Arquitectura Orientada a Servicios">
+      
+      
+        <meta name="author" content="Noe Nieto">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>🎨 Documentación del Frontend - Arquitectura Orientada a Servicios - Unidad 3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentacion-del-frontend" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Arquitectura Orientada a Servicios - Unidad 3" class="md-header__button md-logo" aria-label="Arquitectura Orientada a Servicios - Unidad 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Arquitectura Orientada a Servicios - Unidad 3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🎨 Documentación del Frontend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/misaelnieto/itm_2005_soa_u3/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorial/" class="md-tabs__link">
+          
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../herramientas/fastapi/" class="md-tabs__link">
+          
+  
+  Herramientas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Proyectos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Arquitectura Orientada a Servicios - Unidad 3" class="md-nav__button md-logo" aria-label="Arquitectura Orientada a Servicios - Unidad 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+
+    </a>
+    Arquitectura Orientada a Servicios - Unidad 3
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/misaelnieto/itm_2005_soa_u3/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/winget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 1 - Winget
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 2 - Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/repositorio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 3 - Repositorio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/uv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 4 - UV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/implementacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 5 - Implementación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 6 - Pruebas de integración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/ruff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 7 - Analisis estatico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 8 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/pr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paso 9 - Pull Request
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Herramientas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Herramientas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fastapi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mkdocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Proyectos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Proyectos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2M7 9.5C7 8.7 7.7 8 8.5 8s1.5.7 1.5 1.5S9.3 11 8.5 11 7 10.3 7 9.5m5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81M15.5 11c-.8 0-1.5-.7-1.5-1.5S14.7 8 15.5 8s1.5.7 1.5 1.5-.7 1.5-1.5 1.5"/></svg>
+  
+  <span class="md-ellipsis">
+    Todos los proyectos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Alcancía(Proyecto de referencia)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Alcancía(Proyecto de referencia)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nnieto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nnieto/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nnieto/frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nnieto/tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Peliculas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Peliculas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ksoto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ksoto/schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ksoto/models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modelos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ksoto/frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servidor nodeJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ksoto/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ventas(Javier Contreras)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Ventas(Javier Contreras)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jcontreras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jcontreras/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jcontreras/tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gestión de Cursos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Gestión de Cursos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jchaidez/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jchaidez/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jchaidez/tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodocs pruebas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="documentacion-del-frontend">🎨 Documentación del Frontend<a class="headerlink" href="#documentacion-del-frontend" title="Permanent link">#</a></h1>
+<p>Esta sección contiene la documentación detallada de la implementación del frontend para el API de Registro de Animales.</p>
+<h2 id="frontend-con-reactastro">🌐 Frontend con React/Astro<a class="headerlink" href="#frontend-con-reactastro" title="Permanent link">#</a></h2>
+<p>El frontend está desarrollado con React y Astro, proporcionando una interfaz web moderna y eficiente para interactuar con el API de Registro de Animales. Esta combinación ofrece una experiencia de usuario fluida y atractiva.</p>
+<h3 id="tecnologias-utilizadas">🚀 Tecnologías utilizadas<a class="headerlink" href="#tecnologias-utilizadas" title="Permanent link">#</a></h3>
+<ul>
+<li><strong><a href="https://astro.build/">Astro</a></strong>: Framework web moderno que ofrece rendimiento excepcional mediante la generación de sitios estáticos con hidratación parcial.</li>
+<li><strong><a href="https://reactjs.org/">React</a></strong>: Biblioteca JavaScript para construir interfaces de usuario interactivas.</li>
+<li><strong><a href="https://tailwindcss.com/">Tailwind CSS</a></strong>: Framework CSS utilitario para diseñar rápidamente interfaces modernas.</li>
+<li><strong><a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API">Fetch API</a></strong>: API nativa del navegador para realizar peticiones HTTP.</li>
+</ul>
+<h3 id="estructura-del-proyecto">📁 Estructura del proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>frontend/asantelis/app/
+├── public/                 # Archivos estáticos accesibles públicamente
+│   └── favicon.svg        # Icono de la página
+├── src/                    # Código fuente del proyecto
+│   ├── assets/            # Recursos como imágenes y SVGs
+│   ├── components/        # Componentes React reutilizables
+│   │   ├── AnimalesCrud.jsx  # Componente principal para el CRUD de animales
+│   ├── layouts/           # Plantillas de diseño para las páginas
+│   │   └── Layout.astro   # Diseño principal de la aplicación
+│   ├── pages/             # Páginas de la aplicación
+│   │   └── index.astro    # Página principal
+│   └── styles/            # Estilos CSS
+│       └── global.css     # Estilos globales
+├── astro.config.mjs       # Configuración de Astro
+├── package.json           # Dependencias y scripts
+└── tailwind.config.mjs    # Configuración de Tailwind CSS
+</code></pre></div>
+<h3 id="componente-animalescrud">🧩 Componente AnimalesCrud<a class="headerlink" href="#componente-animalescrud" title="Permanent link">#</a></h3>
+<p>El componente principal es <code>AnimalesCrud</code>, ubicado en <code>/frontend/asantelis/app/src/components/AnimalesCrud.jsx</code>. Este componente gestiona todas las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para los animales.</p>
+<h4 id="estado-del-componente">📊 Estado del Componente<a class="headerlink" href="#estado-del-componente" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">animales</span><span class="p">,</span><span class="w"> </span><span class="nx">setAnimales</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">([]);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">loading</span><span class="p">,</span><span class="w"> </span><span class="nx">setLoading</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">formData</span><span class="p">,</span><span class="w"> </span><span class="nx">setFormData</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">raza</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">editingId</span><span class="p">,</span><span class="w"> </span><span class="nx">setEditingId</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">alert</span><span class="p">,</span><span class="w"> </span><span class="nx">setAlert</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
+<p>El componente mantiene el siguiente estado:
+- <code>animales</code>: Lista de animales registrados.
+- <code>loading</code>: Indicador de carga durante las operaciones asíncronas.
+- <code>formData</code>: Datos del formulario para crear o actualizar un animal.
+- <code>editingId</code>: ID del animal que se está editando (null si no se está editando ninguno).
+- <code>alert</code>: Mensaje de alerta para mostrar al usuario.</p>
+<h4 id="funciones-principales">🛠️ Funciones Principales<a class="headerlink" href="#funciones-principales" title="Permanent link">#</a></h4>
+<h5 id="fetchanimales">📜 fetchAnimales<a class="headerlink" href="#fetchanimales" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">fetchAnimales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">baseUrl</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Error HTTP: </span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">setAnimales</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Error al obtener animales:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span><span class="sb">`Error al cargar los animales: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Esta función realiza una petición GET al endpoint <code>/animales/</code> para obtener la lista de todos los animales registrados.</p>
+<h5 id="handlesubmit">💾 handleSubmit<a class="headerlink" href="#handlesubmit" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">handleSubmit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">formData</span><span class="p">.</span><span class="nx">nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">formData</span><span class="p">.</span><span class="nx">raza</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">formData</span><span class="p">.</span><span class="nx">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span><span class="s2">&quot;Por favor complete todos los campos correctamente&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;warning&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isEditing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">editingId</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">isEditing</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">baseUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">editingId</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">baseUrl</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">isEditing</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;PUT&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">method</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">formData</span><span class="p">),</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">errorData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">errorData</span><span class="p">.</span><span class="nx">detail</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="sb">`Error HTTP: </span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchAnimales</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span>
+<span class="w">      </span><span class="sb">`Animal </span><span class="si">${</span><span class="nx">isEditing</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;actualizado&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;agregado&quot;</span><span class="si">}</span><span class="sb"> correctamente`</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="nx">setFormData</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">raza</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">setEditingId</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
+<span class="w">      </span><span class="sb">`Error al </span><span class="si">${</span><span class="nx">editingId</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;actualizar&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;agregar&quot;</span><span class="si">}</span><span class="sb"> animal:`</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">error</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Esta función maneja el envío del formulario para crear o actualizar un animal. Dependiendo de si se está editando un animal existente o creando uno nuevo, realiza una petición POST o PUT al endpoint correspondiente.</p>
+<h5 id="handledelete">🗑️ handleDelete<a class="headerlink" href="#handledelete" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">handleDelete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;¿Está seguro de que desea eliminar este animal?&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">baseUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Error HTTP: </span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchAnimales</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span><span class="s2">&quot;Animal eliminado correctamente&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Error al eliminar animal:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">showAlert</span><span class="p">(</span><span class="sb">`Error al eliminar: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Esta función maneja la eliminación de un animal. Muestra un diálogo de confirmación y, si el usuario confirma, realiza una petición DELETE al endpoint <code>/animales/{id}</code>.</p>
+<h5 id="showalert">🔔 showAlert<a class="headerlink" href="#showalert" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">showAlert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setAlert</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setAlert</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Esta función muestra un mensaje de alerta temporal al usuario, que desaparece automáticamente después de 3 segundos.</p>
+<h5 id="handleedit">✏️ handleEdit<a class="headerlink" href="#handleedit" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">handleEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">animal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setFormData</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="nx">animal</span><span class="p">.</span><span class="nx">nombre</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">raza</span><span class="o">:</span><span class="w"> </span><span class="nx">animal</span><span class="p">.</span><span class="nx">raza</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="nx">animal</span><span class="p">.</span><span class="nx">edad</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">setEditingId</span><span class="p">(</span><span class="nx">animal</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Hacer scroll al formulario</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">({</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">behavior</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;smooth&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Esta función prepara el formulario para editar un animal existente, cargando sus datos actuales y haciendo scroll hacia el formulario.</p>
+<h3 id="interfaz-de-usuario">🖼️ Interfaz de Usuario<a class="headerlink" href="#interfaz-de-usuario" title="Permanent link">#</a></h3>
+<p>El frontend con React/Astro incluye:</p>
+<ol>
+<li>📝 <strong>Formulario de Registro/Edición</strong>: Un formulario con campos para el nombre, raza y edad del animal, y botones para agregar o actualizar el animal.</li>
+</ol>
+<p><img alt="Formulario de registro" src="../image-3.png" /></p>
+<ol>
+<li>📊 <strong>Tabla de Animales</strong>: Una tabla que muestra la lista de animales registrados, con columnas para ID, nombre, raza, edad y fecha de registro, y botones para editar y eliminar cada animal.</li>
+</ol>
+<p><img alt="Tabla de animales" src="../image-4.png" /></p>
+<ol>
+<li>🔔 <strong>Alertas</strong>: Mensajes de alerta que se muestran al usuario después de realizar operaciones, indicando si fueron exitosas o si ocurrió algún error.</li>
+</ol>
+<h3 id="flujo-de-trabajo">🔄 Flujo de trabajo<a class="headerlink" href="#flujo-de-trabajo" title="Permanent link">#</a></h3>
+<p>El flujo de trabajo típico para interactuar con la aplicación es el siguiente:</p>
+<ol>
+<li>🚀 <strong>Inicio</strong>: Al cargar la página, se realiza una petición al backend para obtener la lista de animales registrados.</li>
+<li>➕ <strong>Registro</strong>: El usuario puede completar el formulario y hacer clic en "Agregar" para registrar un nuevo animal.</li>
+<li>✏️ <strong>Edición</strong>: El usuario puede hacer clic en "Editar" junto a un animal para cargar sus datos en el formulario y modificarlos.</li>
+<li>🗑️ <strong>Eliminación</strong>: El usuario puede hacer clic en "Eliminar" junto a un animal para eliminarlo, previa confirmación.</li>
+</ol>
+<h3 id="integracion-con-el-backend">📋 Integración con el backend<a class="headerlink" href="#integracion-con-el-backend" title="Permanent link">#</a></h3>
+<p>El frontend se comunica con el backend a través de la API REST. Las principales interacciones son:</p>
+<ul>
+<li>📥 <strong>GET /animales</strong>: Obtiene la lista de todos los animales registrados.</li>
+<li>📤 <strong>POST /animales</strong>: Registra un nuevo animal.</li>
+<li>🔍 <strong>GET /animales/{id}</strong>: Obtiene los detalles de un animal específico.</li>
+<li>✏️ <strong>PUT /animales/{id}</strong>: Actualiza los detalles de un animal específico.</li>
+<li>🗑️ <strong>DELETE /animales/{id}</strong>: Elimina un animal específico.</li>
+</ul>
+<h2 id="guia-de-instalacion-y-uso">🚀 Guía de instalación y uso<a class="headerlink" href="#guia-de-instalacion-y-uso" title="Permanent link">#</a></h2>
+<h3 id="requisitos-previos">📋 Requisitos previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://nodejs.org/">Node.js</a> (versión 16 o superior)</li>
+<li><a href="https://www.npmjs.com/">npm</a> (incluido con Node.js)</li>
+<li>Backend del API de Registro de Animales en ejecución</li>
+</ul>
+<h3 id="instalacion">⚙️ Instalación<a class="headerlink" href="#instalacion" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Clona el repositorio:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;url-del-repositorio&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>Navega al directorio del frontend:
+   <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>itm_2025_soa_u3/frontend/asantelis/app
+</code></pre></div></p>
+</li>
+<li>
+<p>Instala las dependencias:
+   <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="ejecucion">🏃‍♂️ Ejecución<a class="headerlink" href="#ejecucion" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Asegúrate de que el backend esté en ejecución:
+   <div class="highlight"><pre><span></span><code><span class="c1"># En otra terminal</span>
+<span class="nb">cd</span><span class="w"> </span>itm_2025_soa_u3
+uv<span class="w"> </span>run<span class="w"> </span>fastapi<span class="w"> </span>run
+</code></pre></div></p>
+</li>
+<li>
+<p>Inicia el servidor de desarrollo de Astro:
+   <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div></p>
+</li>
+<li>
+<p>Abre tu navegador en la dirección que se muestra en la terminal (generalmente http://localhost:4321)</p>
+</li>
+</ol>
+<h3 id="construccion-para-produccion">🏗️ Construcción para producción<a class="headerlink" href="#construccion-para-produccion" title="Permanent link">#</a></h3>
+<p>Para construir la aplicación para producción:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+<p>Esto generará una versión optimizada de la aplicación en el directorio <code>dist/</code>.</p>
+<h3 id="visualizacion-previa-de-la-version-de-produccion">📱 Visualización previa de la versión de producción<a class="headerlink" href="#visualizacion-previa-de-la-version-de-produccion" title="Permanent link">#</a></h3>
+<p>Para visualizar la versión de producción localmente:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>preview
+</code></pre></div>
+<h2 id="personalizacion-y-extension">🧩 Personalización y extensión<a class="headerlink" href="#personalizacion-y-extension" title="Permanent link">#</a></h2>
+<h3 id="personalizacion-de-estilos">🎨 Personalización de estilos<a class="headerlink" href="#personalizacion-de-estilos" title="Permanent link">#</a></h3>
+<p>El proyecto utiliza Tailwind CSS para los estilos. Puedes personalizar los estilos modificando:</p>
+<ul>
+<li><code>src/styles/global.css</code>: Para estilos globales</li>
+<li><code>tailwind.config.mjs</code>: Para configurar los temas y colores de Tailwind</li>
+</ul>
+<h3 id="anadir-nuevas-funcionalidades">➕ Añadir nuevas funcionalidades<a class="headerlink" href="#anadir-nuevas-funcionalidades" title="Permanent link">#</a></h3>
+<p>Para añadir nuevas funcionalidades al componente <code>AnimalesCrud.jsx</code>:</p>
+<ol>
+<li>Define nuevos estados si es necesario</li>
+<li>Implementa las funciones para manejar la nueva funcionalidad</li>
+<li>Actualiza la interfaz de usuario para incluir los nuevos elementos</li>
+</ol>
+<h3 id="integracion-con-otras-apis">🔄 Integración con otras APIs<a class="headerlink" href="#integracion-con-otras-apis" title="Permanent link">#</a></h3>
+<p>Si deseas integrar el frontend con otras APIs:</p>
+<ol>
+<li>Modifica la variable <code>baseUrl</code> en el componente <code>AnimalesCrud.jsx</code></li>
+<li>Ajusta las estructuras de datos y funciones para adaptarse a la nueva API</li>
+<li>Actualiza la interfaz de usuario según sea necesario</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.path", "toc.integrate", "navigation.top", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
