@@ -151,13 +151,6 @@ uv run pytest
 
 ---
 
-## Frontend
-
-El código fuente del frontend se encuentra en el archivo `/frontend/jcontreras`. Este módulo interactúa con el backend para mostrar el estado de la libreria y permitir operaciones como alta y baja.
-
-[Documentación de Funciones del frontend](frontend.md){ .md-button .md-button--primary}
-
-
 ### Cómo arrancar el frontend
 
 Primero arranca el backend, luego abre otra terminal y utiliza el siguiente comando:
