@@ -103,3 +103,6 @@ ignore = [
 "**/tests/**" = [
   "S101",   # assertions 
 ]
+
+[tool.uv.workspace]
+members = ["example"]
