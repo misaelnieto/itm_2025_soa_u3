@@ -121,8 +121,6 @@ app = FastAPI(
         },
     ],
 )
-
-
 # Agrega el middleware de CORS a la aplicación
 origins = [
     "http://localhost:3000",
