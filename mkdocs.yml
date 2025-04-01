@@ -33,6 +33,14 @@ nav:
           - Modelos: proyectos/ksoto/models.md
           - Servidor nodeJS: proyectos/ksoto/frontend.md
           - Pruebas: proyectos/ksoto/test.md
+      - Ventas(Javier Contreras): 
+        - Presentación: proyectos/jcontreras/index.md
+        - Autodocs backend: proyectos/jcontreras/backend.md
+        - Autodocs pruebas: proyectos/jcontreras/tests.md
+      - Gestión de Cursos: 
+        - Presentación: proyectos/jchaidez/index.md
+        - Autodocs backend: proyectos/jchaidez/backend.md
+        - Autodocs pruebas: proyectos/jchaidez/tests.md
 
 theme:
   name: material
