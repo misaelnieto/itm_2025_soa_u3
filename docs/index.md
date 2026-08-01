@@ -30,7 +30,7 @@ Para que el PR sea integrado en la rama principal (main), debe de cumplir los re
 - [x] El analizador estático de código no produce ningún error.
 - [x] El servicio está documentado en la carpeta `docs`.
 
-## Frontend
+## Frontend   
 
 - [x] El frontend del servicio web REST está con la tecnología que el estudiante elija, pero debe estar debidamente integrado al repositorio.
 - [x] Esta debidamente probado y demuestra la idea completa de su proyecto.
