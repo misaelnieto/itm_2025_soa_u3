@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cursos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestión de Cursos</h1>
+        </header>
+
+        <section class="form-section">
+            <h2>Agregar un Nuevo Curso</h2>
+            <form id="curso-form">
+                <input type="text" id="nombre" placeholder="Nombre del curso" required>
+                <input type="text" id="descripcion" placeholder="Descripción" required>
+                <input type="text" id="maestro" placeholder="Maestro" required>
+                <button type="submit">Agregar Curso</button>
+            </form>
+        </section>
+
+        <section class="courses-section">
+            <h2>Lista de Cursos</h2>
+            <table id="cursos-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Maestro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cursos-list"></tbody>
+            </table>
+        </section>
+        
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

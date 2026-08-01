@@ -1,0 +1,137 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and container setup */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Main container */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+/* Header */
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #3e3e3e;
+}
+
+/* Form section */
+.form-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #555;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5f9ea0;
+}
+
+button {
+    padding: 12px;
+    background-color: #5f9ea0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4f8a86;
+}
+
+/* Courses section */
+.courses-section h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Table section */
+table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+th {
+    background-color: #5f9ea0;
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    color: #333;
+}
+
+td button {
+    padding: 6px 12px;
+    background-color: #ff6347;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+td button:hover {
+    background-color: #e53e34;
+}
+
+td button + button {
+    background-color: #4CAF50;
+}
+
+td button + button:hover {
+    background-color: #45a049;
+}

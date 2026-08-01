@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="center-align">Gestión de Ventas</h2>
+        <div id="message" class="card-panel"></div>
+
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <h4 id="form-title">Agregar Venta</h4>
+        <div class="row">
+            <div class="input-field col s3">
+                <input type="text" id="cliente" placeholder="Nombre del cliente">
+            </div>
+            <div class="input-field col s3">
+                <input type="text" id="producto" placeholder="Producto">
+            </div>
+            <div class="input-field col s2">
+                <input type="number" id="cantidad" placeholder="Cantidad">
+            </div>
+            <div class="input-field col s2">
+                <input type="number" step="0.01" id="precio" placeholder="Precio">
+            </div>
+            <div class="col s2">
+                <button class="btn green" id="submit-btn" onclick="agregarVenta()">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var apiURL = "http://localhost:8000/api/v1/jcontreras/ventas";
+            var editMode = false;
+            var editId = null;
+
+            function mostrarMensaje(mensaje, tipo) {
+                let messageDiv = $("#message");
+                messageDiv.removeClass("red green yellow").addClass(tipo);
+                messageDiv.text(mensaje).fadeIn();
+                if (tipo === "green") {
+                    setTimeout(function() { messageDiv.fadeOut(); }, 3000);
+                }
+            }
+
+            function cargarDatos() {
+                fetch(apiURL)
+                    .then(response => response.json())
+                    .then(data => {
+                        $("table tbody").empty();
+                        if (!Array.isArray(data) || data.length === 0) {
+                            mostrarMensaje("⚠️ No hay ventas registradas.", "yellow");
+                        } else {
+                            data.forEach(item => {
+                                var row = `<tr data-id="${item.id}">
+                                    <td>${item.id}</td>
+                                    <td class="cliente">${item.cliente}</td>
+                                    <td class="producto">${item.producto}</td>
+                                    <td class="cantidad">${item.cantidad}</td>
+                                    <td class="precio">${item.precio}</td>
+                                    <td>
+                                        <a class="edit blue-text" data-id="${item.id}" style="cursor:pointer;">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="delete red-text" data-id="${item.id}" style="cursor:pointer;">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>`;
+                                $("table tbody").append(row);
+                            });
+                            mostrarMensaje("✅ Ventas cargadas correctamente", "green");
+                        }
+                    })
+                    .catch(error => mostrarMensaje(`❌ Error al obtener datos: ${error}`, "red"));
+            }
+
+            function agregarVenta() {
+                const cliente = $("#cliente").val().trim();
+                const producto = $("#producto").val().trim();
+                const cantidad = parseInt($("#cantidad").val());
+                const precio = parseFloat($("#precio").val());
+
+                if (!cliente || !producto || isNaN(cantidad) || isNaN(precio)) {
+                    mostrarMensaje("⚠️ Todos los campos son requeridos.", "red");
+                    return;
+                }
+
+                const method = editMode ? "PUT" : "POST";
+                const url = editMode ? `${apiURL}/${editId}` : apiURL;
+                const mensaje = editMode ? "Venta actualizada correctamente." : "Venta creada correctamente.";
+
+                fetch(url, {
+                    method: method,
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cliente, producto, cantidad, precio })
+                })
+                .then(response => response.json())
+                .then(() => {
+                    mostrarMensaje(`✅ ${mensaje}`, "green");
+                    cargarDatos();
+                    limpiarFormulario();
+                })
+                .catch(error => mostrarMensaje(`❌ Error: ${error}`, "red"));
+            }
+
+            function limpiarFormulario() {
+                $("#cliente").val("");
+                $("#producto").val("");
+                $("#cantidad").val("");
+                $("#precio").val("");
+                $("#submit-btn").text("Agregar").removeClass("blue").addClass("green");
+                $("#form-title").text("Agregar Venta");
+                editMode = false;
+                editId = null;
+            }
+
+            $(document).on("click", ".delete", function () {
+                const id = $(this).data("id");
+                if (!confirm("¿Estás seguro de eliminar esta venta?")) return;
+                fetch(`${apiURL}/${id}`, { method: "DELETE" })
+                .then(() => {
+                    mostrarMensaje("✅ Venta eliminada correctamente.", "green");
+                    cargarDatos();
+                })
+                .catch(error => mostrarMensaje(`❌ Error al eliminar: ${error}`, "red"));
+            });
+
+            $(document).on("click", ".edit", function () {
+                const row = $(this).closest("tr");
+                editId = row.data("id");
+                $("#cliente").val(row.find(".cliente").text());
+                $("#producto").val(row.find(".producto").text());
+                $("#cantidad").val(row.find(".cantidad").text());
+                $("#precio").val(row.find(".precio").text());
+                $("#submit-btn").text("Actualizar").removeClass("green").addClass("blue");
+                $("#form-title").text("Editar Venta");
+                editMode = true;
+            });
+
+            cargarDatos();
+            window.agregarVenta = agregarVenta;
+        });
+    </script>
+</body>
+</html>

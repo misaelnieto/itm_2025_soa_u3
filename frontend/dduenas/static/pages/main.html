@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de estudiantes</title>
+  <link rel="stylesheet" href="../styles/estilo.css">
+</head>
+<body>
+
+<h1>Registro de estudiantes</h1>
+
+
+
+<form id="createEstudiantes" class="form-container">
+
+  <h2>Alta de estudiante</h2>
+
+  <label for="Nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+
+  <label for="Carrera">Carrera:</label>
+  <input type="text" id="carrera" name="carrera" placeholder="Carrera" required>
+
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" name="fecha" placeholder="Fecha" required>
+
+
+  <button type="submit">Registrar estudiante</button>
+
+</form>
+
+
+<form id="delete-student" class="form-container">
+  <h2>Baja de estudiante</h2>
+
+  <label for="ID">ID del estudiante a Eliminar:</label>
+  <input type="number" id="id" name="id" placeholder="ID" required>
+
+  <button type="submit">Eliminar estudiante</button>
+
+</form>
+
+<form id="update-student" class="form-container">
+  <h2>Actualizar estudiante</h2>
+
+  <label for="update-id">ID del estudiante a actualizar:</label>
+  <input type="number" id="update-id" name="id" placeholder="ID" required>
+
+  <label for="update-nombre">Nuevo Nombre:</label>
+  <input type="text" id="update-nombre" name="nombre" placeholder="Nuevo Nombre" required>
+
+  <label for="update-carrera">Nueva Carrera:</label>
+  <input type="text" id="update-carrera" name="carrera" placeholder="Nueva Carrera" required>
+
+  <label for="update-fecha">Nueva Fecha:</label>
+  <input type="date" id="update-fecha" name="fecha" placeholder="Nueva Fecha" required>
+
+  <button type="submit">Actualizar estudiante</button>
+</form>
+
+
+<form id="getEstudiantes" class="students-list">
+  <h2>Estudiantes Registrados</h2>
+
+  <button type="submit">Mostrar estudiantes</button>
+  
+</form>
+
+
+<div id="estudiantes" class="students-list"></div>
+<div id="contenedor-estudiantes" class="students-list"></div>
+
+
+
+
+<script src="../scripts/main.js"></script>
+
+</body>
+</html>
+
+
+
+

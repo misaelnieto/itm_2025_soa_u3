@@ -36,6 +36,7 @@ packages = [
 [project.scripts]
 alcancia = "frontend.nnieto.alcancia:run_app"
 
+
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
@@ -102,3 +103,6 @@ ignore = [
 "**/tests/**" = [
   "S101",   # assertions 
 ]
+
+[tool.uv.workspace]
+members = ["example"]
